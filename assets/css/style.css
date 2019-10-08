@@ -1,0 +1,17 @@
+#userDeck{
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
+    padding: 15px;
+    background: #693e3e;
+    border-top-style: solid;
+    border-top-width: 4px;
+    border-top-color: #4aaaa5;
+    margin-top: 10%;
+}
+
+.scrollmenu{
+    overflow: auto;
+    white-space: nowrap;
+}
