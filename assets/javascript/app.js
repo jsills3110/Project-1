@@ -10,3 +10,10 @@ function search(ingredients) {
    });
 }
 search("tomato");
+
+$("#add-animal").on("click", function (event) {
+    event.preventDefault();
+    var animal = $("#animal-input").val().trim();
+    animals.push(animal);
+    buttonPush();
+});
