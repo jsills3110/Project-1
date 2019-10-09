@@ -1,0 +1,69 @@
+h1{
+    font-family: 'Lobster', cursive;
+    color: #ffffff;
+    font-size: 3rem;
+}
+h2{
+    font-size: 2rem;
+}
+.container-fluid{
+    margin: 0;
+    padding: 0;
+}
+.content{
+    /* border-width: 0.5px;
+    border-style: solid; */
+    margin: 0;
+    padding: 0;
+}
+.row{
+    margin: 0;
+    padding: 0;
+}
+.jumbotron{
+    margin: 0;
+    border-radius: 0;
+    padding: 5px;
+    background-color: #d17255;
+}
+.btn-primary{
+    background-color: #3da700;
+    border-color: #246100;
+}
+.btn-primary:hover{
+    background-color: #3da700;
+    border-color: #246100;
+    opacity: 0.75;
+}
+/* .main-menu-image{
+    background-image: url("../images/2ChocolateChipCookies.jpg");
+    background-size: 75vw;
+} */
+
+
+.main-menu{
+    padding: 25px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    background-color: #c2b398;
+}
+
+.group-menu{
+    padding: 25px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    background-color: #ffffe6;
+    height: 100%;
+
+}
+.deck-menu{
+  
+    padding: 25px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.15rem;
+    background-color: #d17255;
+}
+.card{
+    margin-right: 15px; 
+    display: inline-block;
+}
