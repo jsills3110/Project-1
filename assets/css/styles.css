@@ -57,12 +57,21 @@ h2{
 
 }
 .deck-menu{
-  
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    right: 0%;
     padding: 25px;
     font-family: 'Caveat', cursive;
     font-size: 1.15rem;
     background-color: #d17255;
 }
+
+.scrollmenu{
+    overflow: auto;
+    white-space: nowrap;
+}
+
 .card{
     margin-right: 15px; 
     display: inline-block;
