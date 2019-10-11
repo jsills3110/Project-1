@@ -15,7 +15,19 @@
 </head>
 
 <body>
-    <div class="jumbotron">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">What's cooking..?</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="form-inline my-2 my-lg-0">
+            <input id="search-text" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button id="submit" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
+    </nav>
+    <!-- <div class="jumbotron">
         <h1>What's Cookin...?</h1>
         <form class="form-inline md-form form-sm active-cyan-2 mt-2">
             <input id="search-text" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="search"
@@ -23,14 +35,16 @@
             <a><i id="submit" class="fas fa-search" aria-hidden="true"></i></a>
         </form>
         </br>
-    </div>
+    </div>-->
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 content">
                 <div class="row">
                     <div class="col-12 content">
                         <div class="main-menu">
-                            <h1>Search Results</h1>
+                            <h3>Search Results</h3>
+                            <div class="search-results">
+                            </div>
                             <!-- Begin placeholder -->
                             <!-- <div class="row">
                                 <div class="col-12">
@@ -102,15 +116,17 @@
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div id="userDeck deck-item" class="deck-menu scrollmenu">
-                <button type="button" class="btn btn-primary"><img class="img-fluid" width="90rem"
-                        src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
-                <button type="button" class="btn btn-primary"><img class="img-fluid" width="90rem"
-                        src="assets/images/Green_Beans.jpg">Green_Beans</button>
-                <button type="button" class="btn btn-primary">Deck Button 3</button>
-                <button type="button" class="btn btn-primary">Deck Button 4</button>
-                <button type="button" class="btn btn-primary">Deck Button 5</button>
-                <button type="button" class="btn btn-primary">Deck Button 6</button>
+            <div class="col-12">
+                <div id="userDeck deck-item" class="deck-menu scrollmenu">
+                    <button type="button" class="btn btn-primary"><img class="img-fluid" width="90rem"
+                            src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
+                    <button type="button" class="btn btn-primary"><img class="img-fluid" width="90rem"
+                            src="assets/images/Green_Beans.jpg">Green_Beans</button>
+                    <button type="button" class="btn btn-primary">Deck Button 3</button>
+                    <button type="button" class="btn btn-primary">Deck Button 4</button>
+                    <button type="button" class="btn btn-primary">Deck Button 5</button>
+                    <button type="button" class="btn btn-primary">Deck Button 6</button>
+                </div>
             </div>
         </div>
     </div>
@@ -123,6 +139,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8c30b25c8b.js" crossorigin="anonymous"></script>
+    <script src="assets/javascript/apiconfig.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>
 

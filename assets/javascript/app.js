@@ -1,6 +1,6 @@
-var apiKey = "";
+// var apiKey = ""; apiKey is defined in apiconfig.js
 
-var resultDeck = $(".main-menu"); // The div where the search results go.
+var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
 
 // When the user clicks on the "search" button...
@@ -25,6 +25,7 @@ function search(ingredients) {
 
 // Append the search results to the resultDeck.
 function appendSearchResults(theResults) {
+    $(".search-results").empty();
     for (var i = 0; i < theResults.length; i++) {
         recipeSearchResults.push(theResults[i].id);
         var searchResult = $("<div>");
