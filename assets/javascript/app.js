@@ -1,4 +1,4 @@
-var apiKey = "c7a0c356b7254050a90bd87e23c93870"; // apiKey is defined in apiconfig.js
+// var apiKey = ""; // apiKey is defined in apiconfig.js
 
 var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
