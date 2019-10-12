@@ -53,7 +53,10 @@ function allowDrop(ev) {
    $("#listButton").append(dropDownGroupButtonOpenDiv + buttonDropDownName + dropDownGroupButtonCloseDiv + dropDownListOpenDiv + dropDownListCloseDiv);
    
   }
- createListButton();
+  // $(document).on("click", ".search-result", function(){
+  //   // createListButton();
+  // })
+
   function createList(){
     
       var listOpenDiv = "<a class='dropdown-item group-list-button' href='#'>"
