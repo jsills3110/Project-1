@@ -1,4 +1,4 @@
-// var apiKey = ""; // apiKey is defined in apiconfig.js
+var apiKey = "c7a0c356b7254050a90bd87e23c93870"; // apiKey is defined in apiconfig.js
 
 var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
@@ -58,29 +58,44 @@ function displayRecipe() {
         instructions: []
     }
 
-    // build the div - row
-    var containerDiv = $("<div>");
-    containerDiv.addClass("row");
+    // Find the ing-and-buttons row. 
+    var ingAndButtonsRow = $("#ing-and-buttons");
+
+    // Find the recipe-instructions row.
+    var recipeInstRow = $("#recipe-instructions");
+
+    // Create a new column for ingredients.
+    var ingrColumn = $("<div class='col-8' id='ingredients'>");
+
+    // Create a new column for buttons.
+    var buttonColumn = $("<div class='col' id='recipe-buttons'>");
+
+    // Create a new column for the instructions.
+    var instColumn = $("<div class='col' id='instructions'>");
+
+    // Add required listButtons div to the buttonColumn.
+    var listButtons = $("<div id='listButtons'>");
+    buttonColumn.append(listButtons);
 
     // build h3 label
-    var labelDiv = $("<div>");
-    labelDiv.addClass("col-12");
     var labelH3 = $("<h3>");
     labelH3.text("Ingredients");
-    labelDiv.append(labelH3);
-    containerDiv.append(labelDiv);
+    ingrColumn.append(labelH3);
 
     // Add the ingredients to the container, which in turn calls callInstructions(), which adds
     // the instructions to the container.
-    callIngredients(recipeJSON, recipeId, containerDiv);
+    callIngredients(recipeJSON, recipeId, ingrColumn, instColumn);
 
-    // Add containerDiv to div.main-content
-    $(".main-content").html(containerDiv);
+    // Add the ingredient and button columns to the ingAndButtonsRow and 
+    // add the instructions column to the recipeInstRow.
+    ingAndButtonsRow.append(ingrColumn);
+    ingAndButtonsRow.append(buttonColumn);
+    recipeInstRow.append(instColumn);
 }
 
 // callIngredients calls the spoonacular ingredientWidget, which retrieves the ingredients of a recipe.
 // It adds the ingredients to the temporary recipe JSON and the container Div.
-function callIngredients(theJSON, theId, theContainer) {
+function callIngredients(theJSON, theId, theIngColumn, theInstColumn) {
     // Build the Ingredients list
     var ingredientsUl = $("<ul>");
 
@@ -109,16 +124,16 @@ function callIngredients(theJSON, theId, theContainer) {
         }
 
         // Append the ingredients list to the container div.
-        theContainer.append(ingredientsUl);
+        theIngColumn.append(ingredientsUl);
 
         // Now call the instructions API.
-        callInstructions(theJSON, theId, theContainer);
+        callInstructions(theJSON, theId, theInstColumn);
     });
 }
 
 // callInstructions calls the spoonacular analyzedInstructionsAPI, which retrieves the steps of a recipe.
 // It adds the steps to the temporary recipe JSON and the container Div.
-function callInstructions(theJSON, theId, theContainer) {
+function callInstructions(theJSON, theId, theInstColumn) {
     // Build the Instructions list
     var instructionsUl = $("<ul>");
 
@@ -151,7 +166,7 @@ function callInstructions(theJSON, theId, theContainer) {
         sessionStorage.setItem(theId, JSON.stringify(theJSON));
 
         // Append the instruction list to the container div.
-        theContainer.append(instructionsUl);
+        theInstColumn.append(instructionsUl);
     });
 }
 
