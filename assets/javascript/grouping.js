@@ -1,13 +1,13 @@
 
-     var config = {
-      apiKey: "AIzaSyBOeyfolSEBghtCgX8D6xgrq3Gj8J4wSyo",
-      authDomain: "grouping-persistent-data.firebaseapp.com",
-      databaseURL: "https://grouping-persistent-data.firebaseio.com",
-      projectId: "grouping-persistent-data",
-      storageBucket: "grouping-persistent-data.appspot.com",
-      messagingSenderId: "702782983306",
-      appId: "1:702782983306:web:48eac313f0274bb2ac7173"
-    };
+  var config = {
+    apiKey: "AIzaSyBOeyfolSEBghtCgX8D6xgrq3Gj8J4wSyo",
+    authDomain: "grouping-persistent-data.firebaseapp.com",
+    databaseURL: "https://grouping-persistent-data.firebaseio.com",
+    projectId: "grouping-persistent-data",
+    storageBucket: "grouping-persistent-data.appspot.com",
+    messagingSenderId: "702782983306",
+    appId: "1:702782983306:web:48eac313f0274bb2ac7173"
+  };
     
     firebase.initializeApp(config);
 
