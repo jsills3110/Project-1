@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>What's Cookin</title>
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -28,122 +28,61 @@
         <button id="surprise" class="btn btn-outline-info my-sm-2" type="submit">Surprise Me!!</button>
         </div>
     </nav>
-    <!-- <div class="jumbotron">
-        <h1>What's Cookin...?</h1>
-        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-            <input id="search-text" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="search"
-                aria-label="Search">
-            <a><i id="submit" class="fas fa-search" aria-hidden="true"></i></a>
-        </form>
-        </br>
-    </div>-->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-10 content">
-                <div class="row">
-                    <div class="col-12 content">
-                        <div class="main-menu">
-                            <h3>Search Results</h3>
-                            <div class="search-results">
-                            </div>
-                            <div class="search-surprise">
-                                </div>
-                            <!-- Begin placeholder -->
-                            <!-- <div class="row">
-                                <div class="col-12">
-                                    <h2>Outrageous Chocolate Chip Cookies <img
-                                            src="assets/images/2ChocolateChipCookies.jpg" width="150vw"></h2>
-                                    <hr>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3">
-                                    <u>
-                                        Ingredients</br>
-                                    </u>
-                                    <ul>
-                                        <li>1/2 Cup Butter</li>
-                                        <li>1 Cup All Purpose Flour</li>
-                                        <li>1/2 Cup White Sugar</li>
-                                        <li>1/3 Cup Packed Brown Sugar</li>
-                                        <li>1/2 Cup Peanut Butter</li>
-                                        <li>1/2 Teaspon Vanilla Extract</li>
-                                        <li>1 Egg</li>
-                                        <li>1 Teaspoon Baking Soda</li>
-                                        <li>1/4 Teaspoon Salt</li>
-                                        <li>1/2 Cup Rolled Oats</li>
-                                        <li>1 Cup Semisweet Chocolate Chips</li>
-                                    </ul>
-                                </div>
-                                <div class="col-9">
-                                    <u>
-                                        Directions </br>
-                                    </u>
-                                    -Preheat oven to 350 degrees F (175 degrees C).
-                                    </br>
-                                    -In a medium bowl, cream together the butter, white sugar and brown sugar until
-                                    smooth. Stir in the peanut butter, vanilla and egg until well blended. Combine the
-                                    flour, baking soda and salt; stir into the batter just until moistened. Mix in the
-                                    oats and chocolate chips until evenly distributed. Drop by tablespoonfuls on to
-                                    lightly greased cookie sheets.
-                                    </br>
-                                    -Bake for 10 to 12 minutes in the preheated oven, until the edges start to brown.
-                                    Cool on cookie sheets for about 5 minutes before transferring to wire racks to cool
-                                    completely.
-                                </div> -->
-                        </div>
+            <div class = "col-3 content">
+                <div class="main-menu">
+                    <h2>Search Results</h2>
+                    <div class="search-results">
+                    <!-- Search results will go here -->
                     </div>
+                    <div class="search-surprise"></div>
+                </div>
+            </div>
+            <div class="col-6 content ">
+                <div class="main-content"></div>
+            </div>
+            <div class="col-3 content">
+                <div class="group-menu">
+                    <button id = "create-group-button" type="button">Create Group</button>
+                    <br><br>
+                    <input  id = "create-group-textBox" class="form-control form-control-sm mr-3 w-15" type="text" placeholder="group name"></input>
+                    <hr>
+                    <ul id = "group-items-list">
+                    <!-- Group items will go here -->
+                    </ul>
+                   
                 </div>
             </div>
         </div>
-        <div class="col-12 content ">
-            <div class="main-content"></div>
-        </div>
-        <div class="col-2 content">
-            <div class="group-menu">
-                <ul>
-                    <li>Monday Breakfast</li>
-                    <li>Monday Lunch</li>
-                    <li>Monday Dinner</li>
-                    <li>Thanksgiving Dinner</li>
-                    <li>Potluck</li>
-                    <li>Date Night Dinner</li>
-                    <li>Friday Dinner</li>
-                    <li>Breakfast</li>
-                    <li>Pizza with Salad</li>
-                    <li>Italian Dinner</li>
-                    <li>Barbeque Dinner</li>
-                </ul>
-            </div>
-        </div>
     </div>
-    <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div id="userDeck deck-item" class="deck-menu scrollmenu">
-                    <button type="button" class="btn btn-primary"><img class="img-fluid" width="90rem"
-                            src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
-                    <button type="button" class="btn btn-primary"><img class="img-fluid" width="90rem"
-                            src="assets/images/Green_Beans.jpg">Green_Beans</button>
-                    <button type="button" class="btn btn-primary">Deck Button 3</button>
-                    <button type="button" class="btn btn-primary">Deck Button 4</button>
-                    <button type="button" class="btn btn-primary">Deck Button 5</button>
-                    <button type="button" class="btn btn-primary">Deck Button 6</button>
+            <div id="userDeck deck-item" class="deck-menu scrollmenu">
+                <div class = "col-12">
+                    <!-- Deck items will go here -->
+                    <div id = "deck-item-drop-div" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag1"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>          
+                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag2"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag3"><img class="img-fluid" width="90rem" src="assets/images/Green_Beans.jpg">Green_Beans</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag4">Deck Button 3</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag5">Deck Button 4</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag6">Deck Button 5</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag7">Deck Button 6</button>
+                    </div>
+               
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8c30b25c8b.js" crossorigin="anonymous"></script>
     <script src="assets/javascript/apiconfig.js"></script>
     <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/grouping.js"></script>
 </body>
 
 </html>
+
