@@ -1,4 +1,4 @@
-var apiKey = "4e3dcf2fc1b24adcb55dca009f7a4c1c";
+// var apiKey = ""; apiKey is defined in apiconfig.js
 
 var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
@@ -20,6 +20,21 @@ function search(ingredients) {
     }).then(function (response) {
         console.log(response.results);
         appendSearchResults(response.results);
+    });
+}
+$("#surprise").on("click", function () {
+    recipes = [];
+    surprise(); // Take the user's input and search for recipes.
+});
+function surprise (){
+    var queryURL = "https://api.spoonacular.com/recipes/random?number=10&instructionsRequired=true&apiKey=" + apiKey;
+    console.log(queryURL);
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response);
+        appendSearchResults(response.recipes);
     });
 }
 
