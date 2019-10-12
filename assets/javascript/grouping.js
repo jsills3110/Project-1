@@ -63,13 +63,14 @@ function allowDrop(ev) {
     
   }
   $(document).on("click", ".recipe-group-button", function(){
+    // console.log("yO")
     //this is where the function of adding all recipes in deck will be
   })
   $(document).on("click",".group-list-button", function(){
-    groupOfRecipies.push(this);
-    console.log(groupOfRecipies);
-    var temp = localStorage.getItem(173997)
-    console.log(temp);
+    // groupOfRecipies.push(this);
+    // console.log(groupOfRecipies);
+    // var temp = localStorage.getItem(173997)
+    // console.log(temp);
 
   })
 
