@@ -5,6 +5,15 @@ h1{
 }
 h2{
     font-size: 2rem;
+    /* font-family: 'Caveat', cursive; */
+}
+h3{
+    font-size: 2rem;
+    /* font-family: 'Caveat', cursive; */
+}
+li{
+    font-size: 1.25rem;
+    /* font-family: 'Caveat', cursive; */
 }
 .container-fluid{
     margin: 0;
@@ -24,35 +33,40 @@ h2{
     margin: 0;
     border-radius: 0;
     padding: 5px;
-    background-color: #d17255;
+    background-color: #800000;
 }
 .btn-primary{
-    background-color: #3da700;
-    border-color: #246100;
+    background-color: #464646;
+    border-color: #000000;
 }
 .btn-primary:hover{
-    background-color: #3da700;
-    border-color: #246100;
+    background-color: #464646;
+    border-color: #000000;
     opacity: 0.75;
 }
-/* .main-menu-image{
-    background-image: url("../images/2ChocolateChipCookies.jpg");
-    background-size: 75vw;
-} */
+li:hover{
+    opacity: 0.5;
+}
 
 
+.main-content{
+    padding: 25px;
+    /* font-family: 'Caveat', cursive; */
+    font-size: 1.15rem;
+    background-color:  #ffffff;
+}
 .main-menu{
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
-    background-color: #c2b398;
+    background-color:  #ffffff;
 }
 
 .group-menu{
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
-    background-color: #ffffe6;
+    background-color: #ffffff;
     height: 100%;
 
 }
@@ -62,9 +76,9 @@ h2{
     left: 0%;
     right: 0%;
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
-    background-color: #d17255;
+    background-color: #777777;
 }
 
 .scrollmenu{
@@ -75,4 +89,10 @@ h2{
 .card{
     margin-right: 15px; 
     display: inline-block;
+}
+div.inline { 
+    float:left; 
+}
+.clearBoth { 
+    clear:both; 
 }
