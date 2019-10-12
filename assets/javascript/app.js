@@ -1,4 +1,4 @@
-var apiKey = "";
+var apiKey = "4e3dcf2fc1b24adcb55dca009f7a4c1c";
 
 var resultDeck = $(".main-menu"); // The div where the search results go.
 var recipeSearchResults = [];
