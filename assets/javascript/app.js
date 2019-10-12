@@ -72,6 +72,16 @@ function displayRecipe() {
 
     // Add required listButtons div to the buttonColumn.
     var listButtons = $("<div id='listButtons'>");
+
+    // Add the "add to deck" button.
+    var addToDeckButton = $("<button>");
+    addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2");
+    addToDeckButton.attr("recipe-id", recipeId);
+    addToDeckButton.attr("id", "add-to-deck");
+    addToDeckButton.text("Add to Deck");
+
+    listButtons.append(addToDeckButton);
+
     buttonColumn.append(listButtons);
 
     // build h3 label
