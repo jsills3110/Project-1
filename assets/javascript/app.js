@@ -75,7 +75,7 @@ function displayRecipe() {
 
     // Add the "add to deck" button.
     var addToDeckButton = $("<button>");
-    addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2");
+    addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
     addToDeckButton.attr("recipe-id", recipeId);
     addToDeckButton.attr("id", "add-to-deck");
     addToDeckButton.text("Add to Deck");
@@ -98,6 +98,8 @@ function displayRecipe() {
     ingAndButtonsRow.append(ingrColumn);
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
+    // Call Abe's function from grouping.js
+    createListButton();
 }
 
 // callIngredients calls the spoonacular ingredientWidget, which retrieves the ingredients of a recipe.

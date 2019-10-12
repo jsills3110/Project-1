@@ -45,13 +45,13 @@ function allowDrop(ev) {
     ev.target.appendChild(document.getElementById(data));
   }
   function createListButton(){
-   var dropDownGroupButtonOpenDiv = "<button class='btn btn-secondary dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+   var dropDownGroupButtonOpenDiv = "<button class='btn btn-secondary btn-block dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
    var buttonDropDownName = "Add Recipe to Group";
    var dropDownGroupButtonCloseDiv = "</button>";
    var dropDownListOpenDiv = "<div id = 'groupList' class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
    var dropDownListCloseDiv = "</div>"
-   $("#listButton").append(dropDownGroupButtonOpenDiv + buttonDropDownName + dropDownGroupButtonCloseDiv + dropDownListOpenDiv + dropDownListCloseDiv);
-   
+   $("#listButtons").append(dropDownGroupButtonOpenDiv + buttonDropDownName + dropDownGroupButtonCloseDiv + dropDownListOpenDiv + dropDownListCloseDiv);
+  
   }
   // $(document).on("click", ".search-result", function(){
   //   // createListButton();
