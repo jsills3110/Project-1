@@ -9,23 +9,27 @@ $("#submit").on("click", function (event) {
     recipes = [];
     var searchQuery = $("#search-text").val().trim();
     var queryURL = "https://api.spoonacular.com/recipes/search?query=" + searchQuery + "&instructionsRequired=true&apiKey=" + apiKey;
-    search(queryURL); // Take the user's input and search for recipes.
+    search(queryURL, "basicSearch"); // Take the user's input and search for recipes.
 });
 
 // When the Suprise Me!! button is clicked, trigger the surprise function.
 $("#surprise").on("click", function () {
     recipes = [];
     var queryURL = "https://api.spoonacular.com/recipes/random?number=10&instructionsRequired=true&apiKey=" + apiKey;
-    search(queryURL); // Take the user's input and search for recipes.
+    search(queryURL, "surpriseSearch"); // Take the user's input and search for recipes.
 });
 
 // Search the spoonacular API using the provided URL.
-function search(theURL) {
+function search(theURL, theType) {
     $.ajax({
         url: theURL,
         method: "GET",
     }).then(function (response) {
-        appendSearchResults(response.results);
+        if (theType === "basicSearch") {
+            appendSearchResults(response.results);
+        } else if (theType === "surpriseSearch") {
+            appendSearchResults(response.recipes);
+        }
     });
 }
 
@@ -48,10 +52,10 @@ function displayRecipe() {
     var recipeId = $(this).attr("data-id");
 
     var recipeJSON = {
-        spoonId : recipeId,
-        title : $(this).html(),
-        ingredients : [],
-        instructions : []
+        spoonId: recipeId,
+        title: $(this).html(),
+        ingredients: [],
+        instructions: []
     }
 
     // build the div - row
@@ -92,10 +96,10 @@ function callIngredients(theJSON, theId, theContainer) {
         // For each ingredient in the array...
         for (var i = 0; i < ingredients.length; i++) {
             var ingredientLi = $("<li>");
-            
+
             // Create a string which is built from the ingredient amount, ingredient unit, and ingredient name.
             var currentIng = ingredients[i].amount.us.value + " " + ingredients[i].amount.us.unit + " " + ingredients[i].name;
-            
+
             // Push the ingredient to the recipe JSON.
             theJSON.ingredients.push(currentIng);
 
@@ -124,20 +128,20 @@ function callInstructions(theJSON, theId, theContainer) {
         url: instQueryURL,
         method: "GET",
     }).then(function (response) {
-        
+
         var recipeInstructions = response[0].steps; // Get the instructions array from the response.
 
         // For each instruction in the array...
         for (var i = 0; i < recipeInstructions.length; i++) {
             var instructionsLi = $("<li>");
-            
+
             // Get the instruction number and the step.
             var instNumber = recipeInstructions[i].number;
             var instStep = recipeInstructions[i].step;
-            
+
             // Push the step to the recipe JSON.
             theJSON.instructions.push(instStep);
-            
+
             // Append the instruction to the instruction list.
             instructionsLi.text(instNumber + " " + instStep);
             instructionsUl.append(instructionsLi);
@@ -145,7 +149,7 @@ function callInstructions(theJSON, theId, theContainer) {
 
         // Add the recipe JSON to session storage.
         sessionStorage.setItem(theId, JSON.stringify(theJSON));
-        
+
         // Append the instruction list to the container div.
         theContainer.append(instructionsUl);
     });
