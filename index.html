@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -26,20 +27,14 @@
         </form>
         </div>
     </nav>
-    <!-- <div class="jumbotron">
-        <h1>What's Cookin...?</h1>
-        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-            <input id="search-text" class="form-control form-control-sm mr-3 w-75" type="text" placeholder="search"
-                aria-label="Search">
-            <a><i id="submit" class="fas fa-search" aria-hidden="true"></i></a>
-        </form>
-        </br>
-    </div>-->
     <div class="container-fluid">
         <div class="row">
             <div class = "col-3 content">
                 <div class="main-menu">
                     <h2>Search Results</h2>
+                    <div class="search-results">
+                    <!-- Search results will go here -->
+                    </div>
                 </div>
             </div>
             <div class="col-6 content ">
@@ -52,11 +47,9 @@
                     <input  id = "create-group-textBox" class="form-control form-control-sm mr-3 w-15" type="text" placeholder="group name"></input>
                     <hr>
                     <ul id = "group-items-list">
-
+                    <!-- Group items will go here -->
                     </ul>
-                    <div id = "div2" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    
-                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -64,16 +57,17 @@
         <div class="row">
             <div id="userDeck deck-item" class="deck-menu scrollmenu">
                 <div class = "col-12">
-                    <div id = "div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <!-- <img src = "assets/images/2ChocolateChipCookies.jpg" draggable = "true" ondragstart="drag(event)" id="drag1" width="50px" >   -->
-                        <button type="button" class="btn btn-primary deck-item" draggable = "true" ondragstart="drag(event)" id="drag1"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>          
+                    <!-- Deck items will go here -->
+                    <div id = "deck-item-drop-div" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag1"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>          
+                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag2"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag3"><img class="img-fluid" width="90rem" src="assets/images/Green_Beans.jpg">Green_Beans</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag4">Deck Button 3</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag5">Deck Button 4</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag6">Deck Button 5</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag7">Deck Button 6</button>
                     </div>
-                <button type="button" class="btn btn-primary deck-item"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
-                <button type="button" class="btn btn-primary deck-item"><img class="img-fluid" width="90rem" src="assets/images/Green_Beans.jpg">Green_Beans</button>
-                <button type="button" class="btn btn-primary deck-item">Deck Button 3</button>
-                <button type="button" class="btn btn-primary deck-item">Deck Button 4</button>
-                <button type="button" class="btn btn-primary deck-item">Deck Button 5</button>
-                <button type="button" class="btn btn-primary deck-item">Deck Button 6</button>
+               
                 </div>
             </div>
         </div>

@@ -5,15 +5,15 @@ h1{
 }
 h2{
     font-size: 2rem;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
 }
 h3{
     font-size: 2rem;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
 }
 li{
     font-size: 1.25rem;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
 }
 .container-fluid{
     margin: 0;
@@ -51,20 +51,20 @@ li:hover{
 
 .main-content{
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
     background-color:  #ffffff;
 }
 .main-menu{
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
     background-color:  #ffffff;
 }
 
 .group-menu{
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
     background-color: #ffffff;
     height: 100%;
@@ -76,7 +76,7 @@ li:hover{
     left: 0%;
     right: 0%;
     padding: 25px;
-    font-family: 'Caveat', cursive;
+    /* font-family: 'Caveat', cursive; */
     font-size: 1.15rem;
     background-color: #777777;
 }
@@ -90,11 +90,9 @@ li:hover{
     margin-right: 15px; 
     display: inline-block;
 }
-#div1, #div2 {
-    float: left;
-    width: 100px;
-    height: 35px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid black;
-  }
+div.inline { 
+    float:left; 
+}
+.clearBoth { 
+    clear:both; 
+}
