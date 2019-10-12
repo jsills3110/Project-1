@@ -1,7 +1,7 @@
-// var apiKey = ""; // apiKey is defined in apiconfig.js
-
 var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
+var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
+var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions row.
 
 // When the user clicks on the "search" button...
 $("#submit").on("click", function (event) {
@@ -48,6 +48,9 @@ function appendSearchResults(theResults) {
 
 // Display the ingredients and instructions when the recipe is clicked.
 function displayRecipe() {
+    ingAndButtonsRow.empty();
+    recipeInstRow.empty();
+    
     // Get the data-label 
     var recipeId = $(this).attr("data-id");
 
@@ -57,12 +60,6 @@ function displayRecipe() {
         ingredients: [],
         instructions: []
     }
-
-    // Find the ing-and-buttons row. 
-    var ingAndButtonsRow = $("#ing-and-buttons");
-
-    // Find the recipe-instructions row.
-    var recipeInstRow = $("#recipe-instructions");
 
     // Create a new column for ingredients.
     var ingrColumn = $("<div class='col-8' id='ingredients'>");
