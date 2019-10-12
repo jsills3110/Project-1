@@ -1,4 +1,3 @@
-
 var config = {
   apiKey: "AIzaSyBOeyfolSEBghtCgX8D6xgrq3Gj8J4wSyo",
   authDomain: "grouping-persistent-data.firebaseapp.com",
@@ -13,7 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 var groupList = [];
-
+var groupOfRecipies = [];
 
 $("#create-group-button").on("click", function(){
     var groupItem = $("#create-group-textBox").val().trim();
@@ -57,22 +56,20 @@ function allowDrop(ev) {
  createListButton();
   function createList(){
     
-      var listOpenDiv = "<a class='dropdown-item' href='#'>"
+      var listOpenDiv = "<a class='dropdown-item group-list-button' href='#'>"
       var listText = groupList[groupList.length - 1];
       var listCloseDiv = "</a>";
       $("#groupList").append(listOpenDiv + listText + listCloseDiv);
     
   }
   $(document).on("click", ".recipe-group-button", function(){
-    console.log("OH_YEAH!")
+    //this is where the function of adding all recipes in deck will be
   })
-//   <div class="dropdown">
-//   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-//     Dropdown button
-//   </button>
-//   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-//     <a class="dropdown-item" href="#">Action</a>
-//     <a class="dropdown-item" href="#">Another action</a>
-//     <a class="dropdown-item" href="#">Something else here</a>
-//   </div>
-// </div>
+  $(document).on("click",".group-list-button", function(){
+    groupOfRecipies.push(this);
+    console.log(groupOfRecipies);
+    var temp = localStorage.getItem(173997)
+    console.log(temp);
+
+  })
+
