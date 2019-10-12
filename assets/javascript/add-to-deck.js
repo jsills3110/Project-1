@@ -19,4 +19,4 @@ $(".recipe-instructions")
     //         };
         
 
-$(document).on("click", ".search-result", deckButton);
+$(document).on("click", "#add-to-deck", deckButton);
