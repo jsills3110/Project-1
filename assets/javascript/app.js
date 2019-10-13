@@ -48,6 +48,9 @@ function appendSearchResults(theResults) {
 
 // Display the ingredients and instructions when the recipe is clicked.
 function displayRecipe() {
+    // empty image div
+    $("#image-div").empty();
+
     // Get the data-label 
     var recipeId = $(this).attr("data-id");
 
@@ -57,10 +60,6 @@ function displayRecipe() {
         ingredients: [],
         instructions: []
     }
-
-    // get recipe Image
-    displayRecipeImage(recipeJSON.title);
-
 
     // Find the ing-and-buttons row. 
     var ingAndButtonsRow = $("#ing-and-buttons");
@@ -81,6 +80,7 @@ function displayRecipe() {
     var listButtons = $("<div id='listButtons'>");
     buttonColumn.append(listButtons);
 
+
     // build h3 label
     var labelH3 = $("<h3>");
     labelH3.text("Ingredients");
@@ -95,6 +95,10 @@ function displayRecipe() {
     ingAndButtonsRow.append(ingrColumn);
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
+
+
+    // get recipe Image
+    displayRecipeImage(recipeJSON.title);
 }
 
 // callIngredients calls the spoonacular ingredientWidget, which retrieves the ingredients of a recipe.
