@@ -2,10 +2,12 @@ var images = $(".search-results");
 var imageResult = [];
 $("#submit").on("click", function (event) {
     event.preventDefault();
-  images = [];
+    images = [];
+
     var searchQuery = $("#search-text").val().trim();
-    var queryURL = "https://pixabay.com/api/" + imageResult + apiKey;
-    search(queryURL); 
+    var queryURL = "https://pixabay.com/api/?type=photo=true&apiKey=" + apiKey;
+
+    search(queryURL);
     function search(theURL) {
         $.ajax({
             url: theURL,
@@ -14,5 +16,5 @@ $("#submit").on("click", function (event) {
             appendSearchResults(response.imageResult);
         });
     }
-    
+
 });
