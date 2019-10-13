@@ -1,3 +1,14 @@
+// *************************************************************
+//
+// Author(s): Jessica Sills and Dima Dibb
+// Date: 10/12/2019
+// 
+// search.js searches for recipes using the Spoonacular API. A
+// user can either search for specific recipes based on 
+// ingredients or type, or they can get a set of random recipes.
+//
+// *************************************************************
+
 var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
 var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
@@ -50,7 +61,7 @@ function appendSearchResults(theResults) {
 function displayRecipe() {
     ingAndButtonsRow.empty();
     recipeInstRow.empty();
-    
+
     // Get the data-label 
     var recipeId = $(this).attr("data-id");
 
@@ -81,6 +92,15 @@ function displayRecipe() {
     addToDeckButton.text("Add to Deck");
 
     listButtons.append(addToDeckButton);
+
+    // Add the "edit" button.
+    var editButton = $("<button>");
+    editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
+    editButton.attr("recipe-id", recipeId);
+    editButton.attr("id", "edit-recipe");
+    editButton.text("Edit Recipe");
+
+    listButtons.append(editButton);
 
     buttonColumn.append(listButtons);
 
