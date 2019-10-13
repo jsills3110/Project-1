@@ -1,6 +1,7 @@
 
 function displayRecipeImage(recipeName){
-    var queryURL = "https://pixabay.com/api/?key="+pixabayApiKey+ "&q="+recipeName+"&type=photo&pretty=true";
+    var queryURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key="+flickrApiKey+"&text="+recipeName+"&format=json&nojsoncallback=1";
+
     $.ajax({
         url: queryURL,
         method: "GET",
