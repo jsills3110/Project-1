@@ -1,20 +1,13 @@
-var images = $(".search-results");
-var imageResult = [];
-$("#submit").on("click", function (event) {
-    event.preventDefault();
-    images = [];
 
-    var searchQuery = $("#search-text").val().trim();
-    var queryURL = "https://pixabay.com/api/?type=photo=true&apiKey=" + apiKey;
+function displayRecipeImage(recipeName){
+    var queryURL = "https://pixabay.com/api/?key="+pixabayApiKey+ "&q="+recipeName+"&type=photo&pretty=true";
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+    }).then(function (response) {
+        console.log(response);
 
-    search(queryURL);
-    function search(theURL) {
-        $.ajax({
-            url: theURL,
-            method: "GET",
-        }).then(function (response) {
-            appendSearchResults(response.imageResult);
-        });
-    }
+    });
+}
 
-});
+

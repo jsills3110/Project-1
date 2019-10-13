@@ -58,6 +58,10 @@ function displayRecipe() {
         instructions: []
     }
 
+    // get recipe Image
+    displayRecipeImage(recipeJSON.title);
+
+
     // Find the ing-and-buttons row. 
     var ingAndButtonsRow = $("#ing-and-buttons");
 
