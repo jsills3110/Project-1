@@ -7,8 +7,15 @@ function displayRecipeImage(recipeName){
         method: "GET",
     }).then(function (response) {
         console.log(response);
+        displayRecipe(response);
 
     });
+}
+function displayImage(flickrResponse){
+    var photo = flickrResponse.photos.photo[0];
+    var url = "https://farm"+photo.farm +".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+".jpg";
+
+
 }
 
 
