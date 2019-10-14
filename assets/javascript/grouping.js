@@ -45,7 +45,10 @@ function createList(){
 }
 
 $(document).on("click", ".recipe-group-button", function(){
-    group
+    console.log(recipeId);
+    groupOfRecipies.push(id);
+    console.log(groupOfRecipies);
+
 })
 $(document).on("click",".group-list-button", function(){
     // groupOfRecipies.push(this);
