@@ -10,10 +10,11 @@ var config = {
     
 firebase.initializeApp(config);
 var database = firebase.database();
-
 var groupList = [];
 var groupOfRecipies = [];
 
+//creating groups functionality
+//this is what happens when you click on create group button
 $("#create-group-button").on("click", function(){
     var groupItem = $("#create-group-textBox").val().trim();
     var groupItemDiv = "<div id ='group-item' ondrop='drop(event)' ondragover='allowDrop(event)'><button>"
@@ -21,9 +22,9 @@ $("#create-group-button").on("click", function(){
     groupList.push(groupItem);
     $("#group-items-list").prepend(groupItemDiv + groupItem + groupItemClosingDiv);
     createList();
-    console.log(groupList);
 })
 
+//creates list button; which lists all the groups
 function createListButton(){
    var dropDownGroupButtonOpenDiv = "<button class='btn btn-secondary btn-block dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
    var buttonDropDownName = "Add Recipe to Group";
@@ -31,28 +32,28 @@ function createListButton(){
    var dropDownListOpenDiv = "<div id = 'groupList' class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
    var dropDownListCloseDiv = "</div>"
    $("#listButtons").append(dropDownGroupButtonOpenDiv + buttonDropDownName + dropDownGroupButtonCloseDiv + dropDownListOpenDiv + dropDownListCloseDiv);
-   createList();
-  
+   if(groupList.length != 0){
+    createList();
+   }
 }
+//creates the lists of groups
 function createList(){
-  
     var listOpenDiv = "<a class='dropdown-item group-list-button' href='#'>"
     var listText = groupList[groupList.length - 1];
     var listCloseDiv = "</a>";
     $("#groupList").append(listOpenDiv + listText + listCloseDiv);
-  
 }
-  $(document).on("click", ".recipe-group-button", function(){
-    console.log("yO")
-    //this is where the function of adding all recipes in deck will be
-  })
-  $(document).on("click",".group-list-button", function(){
+
+$(document).on("click", ".recipe-group-button", function(){
+    group
+})
+$(document).on("click",".group-list-button", function(){
     // groupOfRecipies.push(this);
     // console.log(groupOfRecipies);
     // var temp = localStorage.getItem(173997)
     // console.log(temp);
 
-  })
+})
 
 //drag and drop functionality
 function allowDrop(ev) {
