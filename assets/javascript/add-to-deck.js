@@ -2,6 +2,7 @@ var id;
 var ingredients;
 var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
 var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions row.
+
 function deckButton() {
     var addButton = $("<button>");
     addButton.attr("type", "button");
@@ -10,14 +11,11 @@ function deckButton() {
     $("#deck-item-drop-div").append(addButton);
     id = $(this).attr("recipe-id");
     ingredients = $(this).attr("recipe-id");
-    
-
 };
 
 function buttonDisplay(){
     var recipe = JSON.parse(sessionStorage.getItem(id));
-    // var recipe = JSON.parse(sessionStorage.getItem(id));
-    // console.log(recipe);
+    console.log(recipe);
 $(".ing-and-buttons").text(sessionStorage.getItem(ingredients));
 $(".recipe-instructions").text(sessionStorage.getItem(recipe));
 displayRecipe(id);
@@ -26,7 +24,7 @@ displayRecipe(id);
 function displayRecipe(recipeIdNumber){
     var recipeItem = JSON.parse(sessionStorage.getItem(recipeIdNumber));
     var ing = recipeItem.ingredients;
-    // var ingredients = [];
+    var instr = recipeItem.instructions;
     console.log(ing[0]);
    // Display the ingredients and instructions when the recipe is clicked.
     ingAndButtonsRow.empty();
@@ -61,6 +59,13 @@ function displayRecipe(recipeIdNumber){
     ingrColumn.append(labelH3);
 
     // Add the ingredients to the container, which in turn calls callInstructions(), which adds
+    for(i = 0; i < ing.length; i++){
+        var ingredientLi = $("<li>");
+        ingredientLi.addClass("list-style");
+        ingrColumn.append(ingredientLi);
+        ingredientLi.append(ing[i]);
+        console.log(ing[i]);
+    };   
     // the instructions to the container.
     // callIngredients(recipeJSON, recipeId, ingrColumn, instColumn);
 
@@ -69,35 +74,15 @@ function displayRecipe(recipeIdNumber){
     ingAndButtonsRow.append(ingrColumn);
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
-    // for(var i = 0; i < ingredientArrItem.length; i++){}
     
-    $("#recipe-instructions").html()
+    for(i = 0; i < instr.length; i++){
+        var instructionLi = $("<li>");
+        instructionLi.addClass("list-style")
+        instColumn.append(instructionLi);
+        instructionLi.append(i+1 + " " + instr[i]);
+        console.log(instr[i]);
+    };   
 };
-
-// var ingredients = response.ingredients; // Get the ingredients array from the response.
-
-//         // For each ingredient in the array...
-//         for (var i = 0; i < ingredients.length; i++) {
-//             var ingredientLi = $("<li>");
-
-//             // Create a string which is built from the ingredient amount, ingredient unit, and ingredient name.
-//             var currentIng = ingredients[i].amount.us.value + " " + ingredients[i].amount.us.unit + " " + ingredients[i].name;
-
-//             // Push the ingredient to the recipe JSON.
-//             theJSON.ingredients.push(currentIng);
-
-//             // Add the ingredient to the ingredient list.
-//             ingredientLi.text(currentIng);
-//             ingredientsUl.append(ingredientLi);
-//         }
-
-//         // Append the ingredients list to the container div.
-//         theIngColumn.append(ingredientsUl);
-
-    // <button type="button" class="btn btn-primary deck-item inline" draggable="true" ondragstart="drag(event)"
-    //     id="drag1"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">
-    //         2ChocolateChipCookies </button>
-    //         };
         
 
 $(document).on("click", "#add-to-deck", deckButton);
