@@ -23,15 +23,47 @@ $("#create-group-button").on("click", function(){
     createList();
     console.log(groupList);
 })
+
+function createListButton(){
+   var dropDownGroupButtonOpenDiv = "<button class='btn btn-secondary btn-block dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+   var buttonDropDownName = "Add Recipe to Group";
+   var dropDownGroupButtonCloseDiv = "</button>";
+   var dropDownListOpenDiv = "<div id = 'groupList' class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
+   var dropDownListCloseDiv = "</div>"
+   $("#listButtons").append(dropDownGroupButtonOpenDiv + buttonDropDownName + dropDownGroupButtonCloseDiv + dropDownListOpenDiv + dropDownListCloseDiv);
+   createList();
+  
+}
+function createList(){
+  
+    var listOpenDiv = "<a class='dropdown-item group-list-button' href='#'>"
+    var listText = groupList[groupList.length - 1];
+    var listCloseDiv = "</a>";
+    $("#groupList").append(listOpenDiv + listText + listCloseDiv);
+  
+}
+  $(document).on("click", ".recipe-group-button", function(){
+    console.log("yO")
+    //this is where the function of adding all recipes in deck will be
+  })
+  $(document).on("click",".group-list-button", function(){
+    // groupOfRecipies.push(this);
+    // console.log(groupOfRecipies);
+    // var temp = localStorage.getItem(173997)
+    // console.log(temp);
+
+  })
+
+//drag and drop functionality
 function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
   
-  function drag(ev) {
+function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
-  }
+}
   
-  function drop(ev) {
+function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     var documentData = document.getElementById(data);
@@ -43,37 +75,4 @@ function allowDrop(ev) {
     console.log(documentData);
     console.log(stringVer);
     ev.target.appendChild(document.getElementById(data));
-  }
-  function createListButton(){
-   var dropDownGroupButtonOpenDiv = "<button class='btn btn-secondary btn-block dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
-   var buttonDropDownName = "Add Recipe to Group";
-   var dropDownGroupButtonCloseDiv = "</button>";
-   var dropDownListOpenDiv = "<div id = 'groupList' class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
-   var dropDownListCloseDiv = "</div>"
-   $("#listButtons").append(dropDownGroupButtonOpenDiv + buttonDropDownName + dropDownGroupButtonCloseDiv + dropDownListOpenDiv + dropDownListCloseDiv);
-  
-  }
-  // $(document).on("click", ".search-result", function(){
-  //   // createListButton();
-  // })
-
-  function createList(){
-    
-      var listOpenDiv = "<a class='dropdown-item group-list-button' href='#'>"
-      var listText = groupList[groupList.length - 1];
-      var listCloseDiv = "</a>";
-      $("#groupList").append(listOpenDiv + listText + listCloseDiv);
-    
-  }
-  $(document).on("click", ".recipe-group-button", function(){
-    // console.log("yO")
-    //this is where the function of adding all recipes in deck will be
-  })
-  $(document).on("click",".group-list-button", function(){
-    // groupOfRecipies.push(this);
-    // console.log(groupOfRecipies);
-    // var temp = localStorage.getItem(173997)
-    // console.log(temp);
-
-  })
-
+}
