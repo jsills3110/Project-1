@@ -13,7 +13,7 @@ var groupingsOfRecipies = {};
 $("#create-group-button").on("click", function(){
     groupItem = $("#create-group-textBox").val().trim();
     // var groupItemDiv = "<div id ='group-item' ondrop='drop(event)' ondragover='allowDrop(event)'><button>"
-    var groupItemDiv = "<div class = 'group-item'><button class = 'group-item-button'>"
+    var groupItemDiv = "<div class = 'group-item'><button class = 'btn btn-outline-success mr-2 my-sm-2 btn-block group-item-button'>"
     var groupItemClosingDiv = "</button></div><br>"
 
 
@@ -27,7 +27,7 @@ $("#create-group-button").on("click", function(){
 
 //creates list button; which lists all the groups
 function createListButton(){
-   var dropDownGroupButtonOpenDiv = "<button class='btn btn-secondary btn-block dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
+   var dropDownGroupButtonOpenDiv = "<button class='btn btn-outline-success mr-2 my-sm-2 btn-block dropdown-toggle recipe-group-button' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>";
    var buttonDropDownName = "Add Recipe to Group";
    var dropDownGroupButtonCloseDiv = "</button>";
    var dropDownListOpenDiv = "<div id = 'groupList' class='dropdown-menu' aria-labelledby='dropdownMenuButton'>";
