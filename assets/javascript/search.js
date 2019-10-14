@@ -1,7 +1,18 @@
-// var apiKey = "";  apiKey is defined in apiconfig.js
+// *************************************************************
+//
+// Author(s): Jessica Sills and Dima Dibb
+// Date: 10/12/2019
+// 
+// search.js searches for recipes using the Spoonacular API. A
+// user can either search for specific recipes based on 
+// ingredients or type, or they can get a set of random recipes.
+//
+// *************************************************************
 
 var resultDeck = $(".search-results"); // The div where the search results go.
 var recipeSearchResults = [];
+var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
+var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions row.
 
 // When the user clicks on the "search" button...
 $("#submit").on("click", function (event) {
@@ -48,6 +59,8 @@ function appendSearchResults(theResults) {
 
 // Display the ingredients and instructions when the recipe is clicked.
 function displayRecipe() {
+    ingAndButtonsRow.empty();
+    recipeInstRow.empty();
     // empty image div
     $("#image-div").empty();
 
@@ -61,12 +74,6 @@ function displayRecipe() {
         instructions: []
     }
 
-    // Find the ing-and-buttons row. 
-    var ingAndButtonsRow = $("#ing-and-buttons");
-
-    // Find the recipe-instructions row.
-    var recipeInstRow = $("#recipe-instructions");
-
     // Create a new column for ingredients.
     var ingrColumn = $("<div class='col-8' id='ingredients'>");
 
@@ -78,8 +85,26 @@ function displayRecipe() {
 
     // Add required listButtons div to the buttonColumn.
     var listButtons = $("<div id='listButtons'>");
-    buttonColumn.append(listButtons);
 
+    // Add the "add to deck" button.
+    var addToDeckButton = $("<button>");
+    addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
+    addToDeckButton.attr("recipe-id", recipeId);
+    addToDeckButton.attr("id", "add-to-deck");
+    addToDeckButton.text("Add to Deck");
+
+    listButtons.append(addToDeckButton);
+
+    // Add the "edit" button.
+    var editButton = $("<button>");
+    editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
+    editButton.attr("recipe-id", recipeId);
+    editButton.attr("id", "edit-recipe");
+    editButton.text("Edit Recipe");
+
+    listButtons.append(editButton);
+
+    buttonColumn.append(listButtons);
 
     // build h3 label
     var labelH3 = $("<h3>");
@@ -95,10 +120,11 @@ function displayRecipe() {
     ingAndButtonsRow.append(ingrColumn);
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
-
-
+    
     // get recipe Image
     displayRecipeImage(recipeJSON.title);
+    // Call Abe's function from grouping.js
+    createListButton();
 }
 
 // callIngredients calls the spoonacular ingredientWidget, which retrieves the ingredients of a recipe.

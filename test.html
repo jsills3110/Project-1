@@ -39,14 +39,8 @@
                     <div class="search-surprise"></div>
                 </div>
             </div>
-            <div class="col-6 content">
-                <!-- Row for recipe image-->
-                <div class="row" id="image-div">
-                </div>
-                <!-- Row for the ingredients and buttons -->
-                <div class="row" id="ing-and-buttons"></div>
-                <!-- Row for the instructions -->
-                <div class="row" id="recipe-instructions"></div>
+            <div class="col-6 content ">
+                <div class="main-content"></div>
             </div>
             <div class="col-3 content">
                 <div class="group-menu">
@@ -57,6 +51,9 @@
                     <ul id = "group-items-list">
                     <!-- Group items will go here -->
                     </ul>
+                    <div id = "listButton">
+                        
+                    </div>
                    
                 </div>
             </div>
@@ -66,7 +63,14 @@
             <div id="userDeck deck-item" class="deck-menu scrollmenu">
                 <div class = "col-12">
                     <!-- Deck items will go here -->
-                    <div id = "deck-item-drop-div">
+                    <div id = "deck-item-drop-div" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag1"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>          
+                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag2"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag3"><img class="img-fluid" width="90rem" src="assets/images/Green_Beans.jpg">Green_Beans</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag4">Deck Button 3</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag5">Deck Button 4</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag6">Deck Button 5</button>
+                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag7">Deck Button 6</button>
                     </div>
                
                 </div>
@@ -79,12 +83,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8c30b25c8b.js" crossorigin="anonymous"></script>
     <script src="assets/javascript/apiconfig.js"></script>
-    <script src="assets/javascript/search.js"></script>
-    <script src="assets/javascript/editRecipe.js"></script>
-    <script src="assets/javascript/images.js"></script>
+    <script src="assets/javascript/app.js"></script>
     <script src="assets/javascript/grouping.js"></script>
-    <script src="assets/javascript/add-to-deck.js"></script>
-
 </body>
 
 </html>
