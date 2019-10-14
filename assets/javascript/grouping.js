@@ -12,12 +12,14 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var groupList = [];
 var groupOfRecipies = [];
+var currentRecipeID;
 
 //creating groups functionality
 //this is what happens when you click on create group button
 $("#create-group-button").on("click", function(){
     var groupItem = $("#create-group-textBox").val().trim();
-    var groupItemDiv = "<div id ='group-item' ondrop='drop(event)' ondragover='allowDrop(event)'><button>"
+    // var groupItemDiv = "<div id ='group-item' ondrop='drop(event)' ondragover='allowDrop(event)'><button>"
+    var groupItemDiv = "<div class = 'group-item'><button class = 'group-item-button'>"
     var groupItemClosingDiv = "</button></div><br>"
     groupList.push(groupItem);
     $("#group-items-list").prepend(groupItemDiv + groupItem + groupItemClosingDiv);
@@ -45,18 +47,37 @@ function createList(){
 }
 
 $(document).on("click", ".recipe-group-button", function(){
-    console.log(recipeId);
-    groupOfRecipies.push(id);
+    currentRecipeID = $("#add-to-deck").attr("recipe-id");
+    groupOfRecipies.push(currentRecipeID);
     console.log(groupOfRecipies);
 
 })
 $(document).on("click",".group-list-button", function(){
-    // groupOfRecipies.push(this);
-    // console.log(groupOfRecipies);
-    // var temp = localStorage.getItem(173997)
-    // console.log(temp);
+
+
+  //   function deckButton() {
+//     var addButton = $("<button>");
+//     addButton.attr("type", "button");
+//     addButton.addClass("btn btn-primary deck-item inline");
+//     addButton.text("New Button");
+//     $("#deck-item-drop-div").append(addButton);
+//     id = $(this).attr("recipe-id");
+//     ingredients = $(this).attr("recipe-id");
+// };
 
 })
+$(document).on("click", ".group-item-button", function(){
+  displayRecipe();
+
+})
+function groupToDeck(){
+  var deckButtonDiv = $("<button>");
+  deckButtonDiv.attr("type", "button");
+  deckButtonDiv.addClass("btn btn-primary deck-item inline");
+  deckButtonDiv.text("Group_Deck_Button");
+  $("#deck-item-drop-div").append(deckButtonDiv)
+}
+
 
 //drag and drop functionality
 function allowDrop(ev) {
