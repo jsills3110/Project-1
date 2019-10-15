@@ -61,6 +61,8 @@ function appendSearchResults(theResults) {
 function displayRecipe() {
     ingAndButtonsRow.empty();
     recipeInstRow.empty();
+    // empty image div
+    $("#image-div").empty();
 
     // Get the data-label 
     var recipeId = $(this).attr("data-id");
@@ -118,6 +120,9 @@ function displayRecipe() {
     ingAndButtonsRow.append(ingrColumn);
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
+    
+    // get recipe Image
+    displayRecipeImage(recipeJSON.title);
     // Call Abe's function from grouping.js
     createListButton();
 }
