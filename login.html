@@ -19,24 +19,16 @@
         <a class="navbar-brand" href="#">What's cooking..?</a>
         <form>
             <div class="form-row align-items-center">
-              <div class="col-auto">
-                <label class="sr-only" for="inlineFormInput">Email</label>
-                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Enter your Email">
+               <div class="col-auto mr-5">
+                <label class="sr-only" for="email-text">Email</label>
+                <input type="text" class="form-control mb-2" id="email-text" placeholder="Enter your Email">
               </div>
-              <div class="col-auto">
-                <label class="sr-only" for="inlineFormInputGroup">Password</label>
+               <div class="col-auto">
+                <label class="sr-only" for="password-text">Password</label>
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
                   </div>
-                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Password">
-                </div>
-              </div>
-              <div class="col-auto">
-                <div class="form-check mb-2">
-                  <input class="form-check-input" type="checkbox" id="autoSizingCheck">
-                  <label class="form-check-label" for="autoSizingCheck">
-                    Remember me
-                  </label>
+                  <input type="text" class="form-control" id="password-text" placeholder="Password">
                 </div>
               </div>
               <div class="col-auto">
@@ -49,32 +41,20 @@
     <h2 class="my-3">Sing up is quick and easy!!</h2>
     <form>
         <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          <label for="email-text-signup"class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" id="email-text-signup" placeholder="Email">
           </div>
         </div>
         <div class="form-group row my-3 ">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+          <label for="password-text-signup" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-6">
+            <input type="password" class="form-control" id="password-text-signup" placeholder="Password">
           </div>
         </div>
-        <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline1">Female</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline2">Male</label>
-          </div>
-          <div class="custom-control custom-radio custom-control-inline">
-            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-            <label class="custom-control-label" for="customRadioInline2">Custom</label>
-          </div>
         <div class="form-group row mt-5">
-          <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Sign in</button>
+          <div class="col-sm-6">
+            <button id="submit" type="submit" class="btn btn-primary">Sign up</button>
           </div>
         </div>
       </form>
@@ -84,12 +64,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8c30b25c8b.js" crossorigin="anonymous"></script>
     <script src="assets/javascript/apiconfig.js"></script>
-    <script src="assets/javascript/search.js"></script>
-    <script src="assets/javascript/editRecipe.js"></script>
-    <script src="assets/javascript/images.js"></script>
-    <script src="assets/javascript/grouping.js"></script>
-    <script src="assets/javascript/add-to-deck.js"></script>
-
+    <script src="assets/javascript/login.js"></script>
 </body>
 
 </html>
