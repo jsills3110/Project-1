@@ -1,12 +1,4 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyDEgX56QY2lh2XZbC5lpjcTtLDFwvECD8w",
-    authDomain: "whats-cooking-39dc2.firebaseapp.com",
-    databaseURL: "https://whats-cooking-39dc2.firebaseio.com",
-    projectId: "whats-cooking-39dc2",
-    storageBucket: "whats-cooking-39dc2.appspot.com",
-    messagingSenderId: "972886469154",
-    appId: "1:972886469154:web:6801093a264ce15181b87b"
-  };
+
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   database = firebase.database();
@@ -69,3 +61,39 @@ $("#test").on("click", function(event){
     
 })
 
+// // *************************************************************
+// //
+// // Author(s): Dima Dibb
+// // Date: 10/14/2019
+// // 
+// // login.js when user try to sign up 
+// // they provide email and password to sign up
+// // and data is stored in firebase.
+// // *************************************************************
+
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+
+// // initialize database
+// var database = firebase.database();
+
+// // When the user clicks on the "sign up" button...
+// $("#submit").on("click", function (event) {
+
+//     // prevent form submit 
+//     event.preventDefault();
+
+//     // read the user email
+//     var email = $("#email-text-signup").val().trim();
+//     // read the user password
+//     var password = $("#password-text-signup").val().trim();
+    
+//     //log email
+//     console.log(email);
+    
+//     //store the data in firebase in the users path
+//     database.ref("users").push({
+//        email: email,
+//         password: password
+//       });
+// });
