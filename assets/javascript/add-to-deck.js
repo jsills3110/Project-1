@@ -7,10 +7,11 @@ function deckButton() {
     var addButton = $("<button>");
     addButton.attr("type", "button");
     addButton.addClass("btn btn-primary deck-item inline");
-    addButton.text("New Button");
     $("#deck-item-drop-div").append(addButton);
     id = $(this).attr("recipe-id");
     ingredients = $(this).attr("recipe-id");
+    var temp = JSON.parse(sessionStorage.getItem(id));
+    addButton.text(temp.title);
 };
 
 function buttonDisplay(){
