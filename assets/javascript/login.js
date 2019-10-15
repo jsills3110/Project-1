@@ -1,22 +1,33 @@
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+database = firebase.database();
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  database = firebase.database();
-
-
-  //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
-  
-  const auth = firebase.auth();
+//   var ui = new firebaseui.auth.AuthUI(firebase.auth());
+const auth = firebase.auth();
 //   const db = firebase.firestore();
 
 //listen for auth status changes
 auth.onAuthStateChanged(user=>{
     if(user){
-        console.log('user logged in: ', user)
+        $("#logout").attr("hidden", false);
+        $("#login-toggle").attr("hidden", true);
+        console.log('user logged in: ', user);
 
+       
+        $("#create-group-button").on("click", function(){
+            var tempGroupName = $("#create-group-textBox").val().trim();
+            var tempArray = "HELLO";
+            console.log(tempGroupName);
+            database.ref().push({
+                userEmail: user.email,
+                group: tempGroupName
+            })
+        })
     }
     else{
         console.log('user logged out')
+        $("#logout").attr("hidden", true);
+        $("#login-toggle").attr("hidden", false);
     }
 })
 
@@ -47,19 +58,7 @@ $("#login").on("click", function(){
        
     })
 })
-$("#test").on("click", function(event){
-    event.preventDefault();
-    console.log("HELLO?")
-    database.ref().set({
-        name: "BLAH",
-        email: "BLAH"
-    })
-    database.ref().on("value", function(snapshot){
-        console.log(snapshot)
 
-    })
-    
-})
 
 // // *************************************************************
 // //
