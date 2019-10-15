@@ -1,3 +1,14 @@
+// *************************************************************
+//
+// Author(s): Dima Dibb
+// Date: 10/13/2019
+// 
+// images.js when user select a recipe images
+// make an API call to flickr search API 
+//and display related  images .
+// *************************************************************
+
+
 // display images related to a recipes 
 function displayRecipeImage(recipeName) {
     // flikr search url:
