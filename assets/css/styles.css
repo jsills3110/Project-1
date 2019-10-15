@@ -96,3 +96,7 @@ div.inline {
 .clearBoth { 
     clear:both; 
 }
+
+.list-style {
+    list-style: none;
+}

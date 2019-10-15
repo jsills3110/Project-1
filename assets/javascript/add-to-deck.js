@@ -1,32 +1,40 @@
-var id;
+recipeId = $(this).attr("recipe-id");
 var ingredients;
 var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
 var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions row.
 
+
+//function for generating the buttons on the userdeck
 function deckButton() {
     var addButton = $("<button>");
     addButton.attr("type", "button");
     addButton.addClass("btn btn-primary deck-item inline");
     $("#deck-item-drop-div").append(addButton);
-    id = $(this).attr("recipe-id");
+    var id = $(this).attr("recipe-id");
     ingredients = $(this).attr("recipe-id");
-    var temp = JSON.parse(sessionStorage.getItem(id));
-    addButton.text(temp.title);
+    var sessionId = JSON.parse(sessionStorage.getItem(id));
+    addButton.text(sessionId.title);
+    addButton.attr("recipe-id", id);
 };
 
+//function for displaying the recipe and ingredients on the correct div
 function buttonDisplay(){
+    var id = $(this).attr("recipe-id");
     var recipe = JSON.parse(sessionStorage.getItem(id));
     console.log(recipe);
-$(".ing-and-buttons").text(sessionStorage.getItem(ingredients));
+$(".ing-and-buttons").text(sessionStorage.getItem(id));
 $(".recipe-instructions").text(sessionStorage.getItem(recipe));
-displayRecipe(id);
+displayDeckRecipe(id);
+console.log("button display " + id);
 };
 
-function displayRecipe(recipeIdNumber){
+//function for displaying the recipe
+function displayDeckRecipe(recipeIdNumber){
     var recipeItem = JSON.parse(sessionStorage.getItem(recipeIdNumber));
     var ing = recipeItem.ingredients;
     var instr = recipeItem.instructions;
-    console.log(ing[0]);
+    var id = $(this).attr("recipe-id");
+    console.log("displaydeckrecipe " + recipeIdNumber);
    // Display the ingredients and instructions when the recipe is clicked.
     ingAndButtonsRow.empty();
     recipeInstRow.empty();
@@ -46,7 +54,7 @@ function displayRecipe(recipeIdNumber){
     // Add the "add to deck" button.
     var addToDeckButton = $("<button>");
     addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
-    addToDeckButton.attr("recipe-id", id);
+    // addToDeckButton.attr("recipe-id", id);
     addToDeckButton.attr("id", "add-to-deck");
     addToDeckButton.text("Add to Deck");
 
@@ -57,7 +65,7 @@ function displayRecipe(recipeIdNumber){
      // Add the "edit" button.
      var editButton = $("<button>");
      editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
-     editButton.attr("recipe-id", recipeId);
+     editButton.attr("recipe-id", id);
      editButton.attr("id", "edit-recipe");
      editButton.text("Edit Recipe");
  
@@ -70,7 +78,7 @@ function displayRecipe(recipeIdNumber){
     labelH3.text("Ingredients");
     ingrColumn.append(labelH3);
 
-    // Add the ingredients to the container, which in turn calls callInstructions(), which adds
+    // Add the ingredients to the container
     for(i = 0; i < ing.length; i++){
         var ingredientLi = $("<li>");
         ingredientLi.addClass("list-style");
@@ -91,7 +99,7 @@ function displayRecipe(recipeIdNumber){
         var instructionLi = $("<li>");
         instructionLi.addClass("list-style")
         instColumn.append(instructionLi);
-        instructionLi.append(i+1 + " " + instr[i]);
+        instructionLi.append(i+1 + ") " + instr[i]);
         console.log(instr[i]);
     };  
     createListButton(); 
