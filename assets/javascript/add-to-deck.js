@@ -1,7 +1,6 @@
 var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
 var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions row.
 
-
 //function for generating the buttons on the userdeck
 function deckButton() {
     var addButton = $("<button>");
