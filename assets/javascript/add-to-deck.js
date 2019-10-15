@@ -1,5 +1,3 @@
-recipeId = $(this).attr("recipe-id");
-var ingredients;
 var ingAndButtonsRow = $("#ing-and-buttons"); // Find the ing-and-buttons row. 
 var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions row.
 
@@ -7,12 +5,11 @@ var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions r
 //function for generating the buttons on the userdeck
 function deckButton() {
     var addButton = $("<button>");
+    var id = $(this).attr("recipe-id");
+    var sessionId = JSON.parse(sessionStorage.getItem(id));
     addButton.attr("type", "button");
     addButton.addClass("btn btn-primary deck-item inline");
     $("#deck-item-drop-div").append(addButton);
-    var id = $(this).attr("recipe-id");
-    ingredients = $(this).attr("recipe-id");
-    var sessionId = JSON.parse(sessionStorage.getItem(id));
     addButton.text(sessionId.title);
     addButton.attr("recipe-id", id);
 };
@@ -35,7 +32,7 @@ function displayDeckRecipe(recipeIdNumber){
     var instr = recipeItem.instructions;
     var id = $(this).attr("recipe-id");
     console.log("displaydeckrecipe " + recipeIdNumber);
-   // Display the ingredients and instructions when the recipe is clicked.
+   // clears old recipe 
     ingAndButtonsRow.empty();
     recipeInstRow.empty();
 
@@ -86,8 +83,6 @@ function displayDeckRecipe(recipeIdNumber){
         ingredientLi.append(ing[i]);
         console.log(ing[i]);
     };   
-    // the instructions to the container.
-    // callIngredients(recipeJSON, recipeId, ingrColumn, instColumn);
 
     // Add the ingredient and button columns to the ingAndButtonsRow and 
     // add the instructions column to the recipeInstRow.
@@ -95,6 +90,7 @@ function displayDeckRecipe(recipeIdNumber){
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
     
+    //Add instructions to the container
     for(i = 0; i < instr.length; i++){
         var instructionLi = $("<li>");
         instructionLi.addClass("list-style")
@@ -102,9 +98,10 @@ function displayDeckRecipe(recipeIdNumber){
         instructionLi.append(i+1 + ") " + instr[i]);
         console.log(instr[i]);
     };  
+    //Add button list
     createListButton(); 
 };
         
-
+//Event handlers
 $(document).on("click", "#add-to-deck", deckButton);
 $(document).on("click", ".deck-item", buttonDisplay);
