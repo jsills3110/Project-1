@@ -1,24 +1,45 @@
+// *************************************************************
+//
+// Author(s): Dima Dibb
+// Date: 10/13/2019
+// 
+// images.js when user select a recipe images
+// make an API call to flickr search API 
+//and display related  images .
+// *************************************************************
 
-function displayRecipeImage(recipeName){
-    var queryURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key="+flickrApiKey+"&text="+recipeName+"&format=json&nojsoncallback=1";
 
+// display images related to a recipes 
+function displayRecipeImage(recipeName) {
+    // flikr search url:
+    var queryURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrApiKey + "&text=" + recipeName + "&format=json&nojsoncallback=1";
+    // call ajax to have an image:
     $.ajax({
         url: queryURL,
         method: "GET",
     }).then(function (response) {
+        // log the response
         console.log(response);
+        // call display image
         displayImage(response);
 
     });
 }
-function displayImage(flickrResponse){
-
-    var photo = flickrResponse.photos.photo[0];
-
-    var url = "https://farm"+photo.farm +".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+".jpg";
-    var image = $("<img>");
-   image.attr("src",url);
-  $("#image-div").append(image);
+// create img element from flickr response  
+function displayImage(flickrResponse) {
+// loop over all the photo in the response
+    for (var i = 0; i < flickrResponse.photos.photo.length; i++) {
+        // create a var for the photo
+        var photo = flickrResponse.photos.photo[i];
+        // create img url
+        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
+        // create img element
+        var image = $("<img>");
+        // set the img src to the flickr url
+        image.attr("src", url);
+        // add the img to place holder div 
+        $("#image-div").append(image);
+    }
 }
 
 
