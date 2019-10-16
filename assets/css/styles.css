@@ -59,7 +59,10 @@ li:hover{
     font-family: 'Cormorant Garamond', serif;
     color: #8bba48;
 }
-
+#image-div{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
 .search-result:hover{
     opacity: 0.5;
 }

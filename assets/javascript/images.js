@@ -12,34 +12,33 @@
 // display images related to a recipes 
 function displayRecipeImage(recipeName) {
     // flikr search url:
-    var queryURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrApiKey + "&text=" + recipeName + "&format=json&nojsoncallback=1";
+    var queryURL = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + flickrApiKey + "&text=" + recipeName + "&per_page=1&format=json&nojsoncallback=1";
     // call ajax to have an image:
+    
+    // var queryURL = "https://spoonacular.com/recipeImages/209960.jpg"
     $.ajax({
         url: queryURL,
         method: "GET",
     }).then(function (response) {
-        // log the response
-        console.log(response);
-        // call display image
-        displayImage(response);
+   
+        $("#image-div").empty();
+        for(i=0; i<response.photos.photo.length;i++){
+            var photo = response.photos.photo[i];
+            var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
+            var imageDiv = $("<img>");
+                imageDiv.css("max-width", "400px");
+                imageDiv.attr("src", url);
+                imageDiv.attr("class", "rounded float-right");
 
-    });
-}
-// create img element from flickr response  
-function displayImage(flickrResponse) {
-// loop over all the photo in the response
-    for (var i = 0; i < flickrResponse.photos.photo.length; i++) {
-        // create a var for the photo
-        var photo = flickrResponse.photos.photo[i];
-        // create img url
-        var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/" + photo.id + "_" + photo.secret + ".jpg";
-        // create img element
-        var image = $("<img>");
-        // set the img src to the flickr url
-        image.attr("src", url);
-        // add the img to place holder div 
-        $("#image-div").append(image);
-    }
+            $("#image-div").append(imageDiv);
+        }
+
+    })
 }
 
+
+$(document).on("click", ".search-result", function(){
+   displayRecipeImage($(this).text())
+   console.log($(this).text());
+})
 
