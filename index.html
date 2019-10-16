@@ -29,11 +29,14 @@
         </button>
 
         <form class="form-inline w-50 my-2 my-lg-0 ml-auto mr-auto">
-            <input id="search-text" class="form-control w-50  mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <input id="search-text" class="form-control w-50  mr-sm-2" type="search" placeholder="Search"
+                aria-label="Search">
             <button id="submit" class="btn btn-outline-success mr-2 my-sm-2" type="submit">Search</button>
+            <button id="advanced-search-toggle" class="btn btn-outline-success mr-2 my-sm-2" type="button"
+                data-toggle="modal" data-target="#advanced-search">Advanced Search</button>
             <button id="surprise" class="btn btn-outline-info my-sm-2" type="submit">Surprise Me!!</button>
         </form>
-        
+
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-right ml-auto">
             <!-- Button trigger modal -->
@@ -43,9 +46,39 @@
             </button>&nbsp;&nbsp;
             <button id="logout" class="btn btn-outline-info my-sm-2 float-right" type="submit">Logout</button>
         </nav>
-        
+
     </nav>
-    <!-- Modal -->
+
+    <!-- Advanced Search Modal -->
+    <div class="modal fade" id="advanced-search" tabindex="-1" role="dialog" aria-labelledby="AdvancedSearch"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="advanced-search-label">Advanced Search</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Type of Recipe</h6>
+                    <input id="recipe-topic" class="form-control form-control-sm mr-3 w-15" type="text"
+                        placeholder="Recipe Category or Type"><br>
+                    <input id="add-ingredient" class="form-control form-control-sm mr-3 w-15" type="text"
+                        placeholder="Additional Ingredient"><br>
+                    <input id="add-ingredient" class="form-control form-control-sm mr-3 w-15" type="text"
+                        placeholder="Additional Ingredient"><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="advance-search-submit" class="btn btn-outline-info my-sm-2" data-dismiss="modal"
+                        type="submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log in Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
