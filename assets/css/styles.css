@@ -5,15 +5,15 @@ h1{
 }
 h2{
     font-size: 2rem;
-    /* font-family: 'Caveat', cursive; */
+    font-family: 'Cormorant Garamond', serif;
 }
 h3{
     font-size: 2rem;
-    /* font-family: 'Caveat', cursive; */
+    font-family: 'Cormorant Garamond', serif;
 }
 li{
-    font-size: 1.25rem;
-    /* font-family: 'Caveat', cursive; */
+    font-size: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
 }
 .container-fluid{
     margin: 0;
@@ -29,11 +29,11 @@ li{
     margin: 0;
     padding: 0;
 }
-.jumbotron{
+/* .jumbotron{
     margin: 0;
     border-radius: 0;
     padding: 5px;
-    background-color: #800000;
+    background-color: #800000; */
 }
 .btn-primary{
     background-color: #464646;
@@ -48,37 +48,56 @@ li:hover{
     opacity: 0.5;
 }
 
+#logout{
+    background-color: #8f3d4b;
+    font-family: 'Cormorant Garamond', serif;
+    color: #8bba48;
+}
+
+#login-toggle{
+    background-color: #8f3d4b;
+    font-family: 'Cormorant Garamond', serif;
+    color: #8bba48;
+}
+
+.search-result:hover{
+    opacity: 0.5;
+}
 
 .main-content{
     padding: 25px;
-    /* font-family: 'Caveat', cursive; */
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.15rem;
-    background-color:  #ffffff;
+    background-color:  #f9e9ec;
 }
 .main-menu{
     padding: 25px;
-    /* font-family: 'Caveat', cursive; */
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.15rem;
-    background-color:  #ffffff;
+    background-color:  #f9e9ec;
 }
 
 .group-menu{
     padding: 25px;
-    /* font-family: 'Caveat', cursive; */
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.15rem;
-    background-color: #ffffff;
+    background-color: #f9e9ec;
     height: 100%;
-
 }
+
+#recipe-instructions{
+margin-bottom: 10rem;
+}
+
 .deck-menu{
     position: fixed;
     bottom: 0%;
     left: 0%;
     right: 0%;
     padding: 25px;
-    /* font-family: 'Caveat', cursive; */
+    font-family: 'Cormorant Garamond', serif;
     font-size: 1.15rem;
-    background-color: #777777;
+    background-color: #e27079;
 }
 
 .scrollmenu{

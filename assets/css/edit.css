@@ -1,0 +1,14 @@
+.navbar {
+    background-color: #8f3d4b !important;
+    font-family: 'Cormorant Garamond', serif;
+    color: #8bba48;
+ }
+ body {
+    background-color: #f9e9ec;
+ }
+ .navbar-brand {
+    color: #8bba48 !important;
+ }
+ .color {
+    color: #8bba48 !important;
+ }
