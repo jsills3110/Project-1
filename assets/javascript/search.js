@@ -58,11 +58,11 @@ function appendSearchResults(theResults) {
 }
 
 // Display the ingredients and instructions when the recipe is clicked.
-function displayRecipe() {
-    ingAndButtonsRow.empty();
-    recipeInstRow.empty();
-    // empty image div
-    $("#image-div").empty();
+function getRecipeAndDisplay() {
+    // ingAndButtonsRow.empty();
+    // recipeInstRow.empty();
+    // // empty image div
+    // $("#image-div").empty();
 
     // Get the data-label 
     var recipeId = $(this).attr("data-id");
@@ -74,64 +74,66 @@ function displayRecipe() {
         instructions: []
     }
 
-    // Create a new column for ingredients.
-    var ingrColumn = $("<div class='col-8' id='ingredients'>");
+    // // Create a new column for ingredients.
+    // var ingrColumn = $("<div class='col-8' id='ingredients'>");
 
-    // Create a new column for buttons.
-    var buttonColumn = $("<div class='col' id='recipe-buttons'>");
+    // // Create a new column for buttons.
+    // var buttonColumn = $("<div class='col' id='recipe-buttons'>");
 
-    // Create a new column for the instructions.
-    var instColumn = $("<div class='col' id='instructions'>");
+    // // Create a new column for the instructions.
+    // var instColumn = $("<div class='col' id='instructions'>");
 
-    // Add required listButtons div to the buttonColumn.
-    var listButtons = $("<div id='listButtons'>");
+    // // Add required listButtons div to the buttonColumn.
+    // var listButtons = $("<div id='listButtons'>");
 
-    // Add the "add to deck" button.
-    var addToDeckButton = $("<button>");
-    addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
-    addToDeckButton.attr("recipe-id", recipeId);
-    addToDeckButton.attr("id", "add-to-deck");
-    addToDeckButton.text("Add to Deck");
+    // // Add the "add to deck" button.
+    // var addToDeckButton = $("<button>");
+    // addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
+    // addToDeckButton.attr("recipe-id", recipeId);
+    // addToDeckButton.attr("id", "add-to-deck");
+    // addToDeckButton.text("Add to Deck");
 
-    listButtons.append(addToDeckButton);
+    // listButtons.append(addToDeckButton);
 
-    // Add the "edit" button.
-    var editButton = $("<button>");
-    editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
-    editButton.attr("recipe-id", recipeId);
-    editButton.attr("id", "edit-recipe");
-    editButton.text("Edit Recipe");
+    // // Add the "edit" button.
+    // var editButton = $("<button>");
+    // editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
+    // editButton.attr("recipe-id", recipeId);
+    // editButton.attr("id", "edit-recipe");
+    // editButton.text("Edit Recipe");
 
-    listButtons.append(editButton);
+    // listButtons.append(editButton);
 
-    buttonColumn.append(listButtons);
+    // buttonColumn.append(listButtons);
 
-    // build h3 label
-    var labelH3 = $("<h3>");
-    labelH3.text("Ingredients");
-    ingrColumn.append(labelH3);
+    // // build h3 label
+    // var labelH3 = $("<h3>");
+    // labelH3.text("Ingredients");
+    // ingrColumn.append(labelH3);
 
     // Add the ingredients to the container, which in turn calls callInstructions(), which adds
     // the instructions to the container.
-    callIngredients(recipeJSON, recipeId, ingrColumn, instColumn);
+    // callIngredients(recipeJSON, recipeId, ingrColumn, instColumn);
+    callIngredients(recipeJSON, recipeId);
 
-    // Add the ingredient and button columns to the ingAndButtonsRow and 
-    // add the instructions column to the recipeInstRow.
-    ingAndButtonsRow.append(ingrColumn);
-    ingAndButtonsRow.append(buttonColumn);
-    recipeInstRow.append(instColumn);
-    
-    // get recipe Image
-    displayRecipeImage(recipeJSON.title);
-    // Call Abe's function from grouping.js
-    createListButton();
+    // // Add the ingredient and button columns to the ingAndButtonsRow and 
+    // // add the instructions column to the recipeInstRow.
+    // ingAndButtonsRow.append(ingrColumn);
+    // ingAndButtonsRow.append(buttonColumn);
+    // recipeInstRow.append(instColumn);
+
+    // // get recipe Image
+    // displayRecipeImage(recipeJSON.title);
+    // // Call Abe's function from grouping.js
+    // createListButton();
 }
 
 // callIngredients calls the spoonacular ingredientWidget, which retrieves the ingredients of a recipe.
 // It adds the ingredients to the temporary recipe JSON and the container Div.
-function callIngredients(theJSON, theId, theIngColumn, theInstColumn) {
-    // Build the Ingredients list
-    var ingredientsUl = $("<ul>");
+// function callIngredients(theJSON, theId, theIngColumn, theInstColumn) {
+function callIngredients(theJSON, theId) {
+    // // Build the Ingredients list
+    // var ingredientsUl = $("<ul>");
 
     var ingQueryURL = "https://api.spoonacular.com/recipes/" + theId + "/ingredientWidget.json?apiKey=" + apiKey;
 
@@ -144,32 +146,33 @@ function callIngredients(theJSON, theId, theIngColumn, theInstColumn) {
 
         // For each ingredient in the array...
         for (var i = 0; i < ingredients.length; i++) {
-            var ingredientLi = $("<li>");
+            // var ingredientLi = $("<li>");
 
-            // Create a string which is built from the ingredient amount, ingredient unit, and ingredient name.
-            var currentIng = ingredients[i].amount.us.value + " " + ingredients[i].amount.us.unit + " " + ingredients[i].name;
+            // // Create a string which is built from the ingredient amount, ingredient unit, and ingredient name.
+            // var currentIng = ingredients[i].amount.us.value + " " + ingredients[i].amount.us.unit + " " + ingredients[i].name;
 
             // Push the ingredient to the recipe JSON.
             theJSON.ingredients.push(currentIng);
 
-            // Add the ingredient to the ingredient list.
-            ingredientLi.text(currentIng);
-            ingredientsUl.append(ingredientLi);
+            // // Add the ingredient to the ingredient list.
+            // ingredientLi.text(currentIng);
+            // ingredientsUl.append(ingredientLi);
         }
 
-        // Append the ingredients list to the container div.
-        theIngColumn.append(ingredientsUl);
+        // // Append the ingredients list to the container div.
+        // theIngColumn.append(ingredientsUl);
 
         // Now call the instructions API.
-        callInstructions(theJSON, theId, theInstColumn);
+        // callInstructions(theJSON, theId, theInstColumn);
+        callInstructions(theJSON, theId);
     });
 }
 
 // callInstructions calls the spoonacular analyzedInstructionsAPI, which retrieves the steps of a recipe.
 // It adds the steps to the temporary recipe JSON and the container Div.
 function callInstructions(theJSON, theId, theInstColumn) {
-    // Build the Instructions list
-    var instructionsUl = $("<ul>");
+    // // Build the Instructions list
+    // var instructionsUl = $("<ul>");
 
     var instQueryURL = "https://api.spoonacular.com/recipes/" + theId + "/analyzedInstructions?apiKey=" + apiKey;
 
@@ -182,27 +185,29 @@ function callInstructions(theJSON, theId, theInstColumn) {
 
         // For each instruction in the array...
         for (var i = 0; i < recipeInstructions.length; i++) {
-            var instructionsLi = $("<li>");
+            // var instructionsLi = $("<li>");
 
-            // Get the instruction number and the step.
-            var instNumber = recipeInstructions[i].number;
-            var instStep = recipeInstructions[i].step;
+            // // Get the instruction number and the step.
+            // var instNumber = recipeInstructions[i].number;
+            // var instStep = recipeInstructions[i].step;
 
             // Push the step to the recipe JSON.
             theJSON.instructions.push(instStep);
 
-            // Append the instruction to the instruction list.
-            instructionsLi.text(instNumber + " " + instStep);
-            instructionsUl.append(instructionsLi);
+            // // Append the instruction to the instruction list.
+            // instructionsLi.text(instNumber + " " + instStep);
+            // instructionsUl.append(instructionsLi);
         }
 
         // Add the recipe JSON to session storage.
         sessionStorage.setItem(theId, JSON.stringify(theJSON));
 
-        // Append the instruction list to the container div.
-        theInstColumn.append(instructionsUl);
+        // // Append the instruction list to the container div.
+        // theInstColumn.append(instructionsUl);
+
+        displayRecipe(recipeId);
     });
 }
 
 // When a search result is clicked, display its corresponding recipe ingredients and instructions.
-$(document).on("click", ".search-result", displayRecipe);
+$(document).on("click", ".search-result", getRecipeAndDisplay);
