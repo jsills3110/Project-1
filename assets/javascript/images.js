@@ -27,6 +27,10 @@ function displayRecipeImage(recipeName) {
 }
 // create img element from flickr response  
 function displayImage(flickrResponse) {
+
+    // empty images div
+    $("#image-div").empty();
+
     // get array length
     var length = flickrResponse.photos.photo.length;
 
