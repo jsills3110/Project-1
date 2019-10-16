@@ -27,7 +27,37 @@
         </form>
         <button id="surprise" class="btn btn-outline-info my-sm-2" type="submit">Surprise Me!!</button>
         </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-right">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-info my-sm-2 float-right" data-toggle="modal" data-target="#exampleModal">
+                Login
+            </button>&nbsp;&nbsp;
+            <button id="logout" class="btn btn-outline-info my-sm-2 float-right" type="submit">Logout</button>
+        </nav>
+    
     </nav>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input id="email" class="form-control form-control-sm mr-3 w-15" type="text" placeholder="email"><br>
+          <input id="password" class="form-control form-control-sm mr-3 w-15" type="text" placeholder="password">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="login" class="btn btn-outline-info my-sm-2" data-dismiss="modal" type="submit">Login</button>
+          <button id="signup" class="btn btn-outline-info my-sm-2" data-dismiss="modal" type="submit">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="container-fluid">
         <div class="row">
             <div class = "col-3 content">
@@ -39,21 +69,26 @@
                     <div class="search-surprise"></div>
                 </div>
             </div>
-            <div class="col-6 content ">
-                <div class="main-content"></div>
+            <div class="col-6 content">
+                <!-- Row for recipe image-->
+                <div class="row" id="image-div">
+                </div>
+                <!-- Row for the ingredients and buttons -->
+                <div class="row" id="ing-and-buttons"></div>
+                <!-- Row for the instructions -->
+                <div class="row" id="recipe-instructions"></div>
             </div>
             <div class="col-3 content">
                 <div class="group-menu">
-                    <button id = "create-group-button" type="button">Create Group</button>
+                    <!-- to test login functionality -->
+                    <button id="test" class="btn btn-outline-info my-sm-2" type="submit">Test Login Functionality</button><br><br>
+                    <button id = "create-group-button" class="btn btn-outline-success mr-2 my-sm-2" type="button">Create Group</button>
                     <br><br>
                     <input  id = "create-group-textBox" class="form-control form-control-sm mr-3 w-15" type="text" placeholder="group name"></input>
                     <hr>
                     <ul id = "group-items-list">
                     <!-- Group items will go here -->
                     </ul>
-                    <div id = "listButton">
-                        
-                    </div>
                    
                 </div>
             </div>
@@ -63,14 +98,7 @@
             <div id="userDeck deck-item" class="deck-menu scrollmenu">
                 <div class = "col-12">
                     <!-- Deck items will go here -->
-                    <div id = "deck-item-drop-div" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag1"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>          
-                        <button type="button" class="btn btn-primary deck-item inline" draggable = "true" ondragstart="drag(event)" id="drag2"><img class="img-fluid" width="90rem" src="assets/images/2ChocolateChipCookies.jpg">2ChocolateChipCookies</button>
-                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag3"><img class="img-fluid" width="90rem" src="assets/images/Green_Beans.jpg">Green_Beans</button>
-                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag4">Deck Button 3</button>
-                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag5">Deck Button 4</button>
-                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag6">Deck Button 5</button>
-                        <button type="button" class="btn btn-primary deck-iteminline" draggable = "true" ondragstart="drag(event)" id="drag7">Deck Button 6</button>
+                    <div id = "deck-item-drop-div">
                     </div>
                
                 </div>
@@ -82,9 +110,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/8c30b25c8b.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase-firestore.js"></script>
     <script src="assets/javascript/apiconfig.js"></script>
-    <script src="assets/javascript/app.js"></script>
+    <script src="assets/javascript/search.js"></script>
+    <script src="assets/javascript/editRecipe.js"></script>
+    <script src="assets/javascript/images.js"></script>
     <script src="assets/javascript/grouping.js"></script>
+    <script src="assets/javascript/add-to-deck.js"></script>
+    <script src="assets/javascript/login.js"></script>
+
 </body>
 
 </html>
