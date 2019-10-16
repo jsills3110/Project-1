@@ -16,15 +16,42 @@ var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions r
 // When the user clicks on the "search" button...
 $("#submit").on("click", function (event) {
     event.preventDefault();
-    recipes = [];
+    $("#warning").text(""); // Empty the warning header.
     var searchQuery = $("#search-text").val().trim();
-    var queryURL = "https://api.spoonacular.com/recipes/search?query=" + searchQuery + "&instructionsRequired=true&apiKey=" + apiKey;
-    search(queryURL, "basicSearch"); // Take the user's input and search for recipes.
+    $("#search-text").val(""); // Empty the search box.
+    validateInput(searchQuery);
 });
+
+// Check the input for invalid characters. If it looks good, perform the search. Otherwise,
+// inform the user what they did wrong.
+function validateInput(theSearch) {
+    if (theSearch === "") {
+        $("#warning").text("You can't search for nothing, try again.");
+    } else if (checkAlphanumeric(theSearch)) {
+        var queryURL = "https://api.spoonacular.com/recipes/search?query=" + theSearch + "&instructionsRequired=true&apiKey=" + apiKey;
+        search(queryURL, "basicSearch"); // Take the user's input and search for recipes.
+    } else {
+        $("#warning").text("Allowed characters: letters, numbers, -, and '. Please try again.");
+    }
+}
+
+// Check the search input for any characters other than letters, numbers, spaces, ', and -.
+function checkAlphanumeric(theSearch) {
+    for (var i = 0; i < theSearch.length; i++) {
+        var code = theSearch.charCodeAt(i);
+        if (!(code > 47 && code < 58) && // numeric (0-9)
+            !(code > 64 && code < 91) && // upper alpha (A-Z)
+            !(code > 96 && code < 123) && // lower alpha (a-z)
+            !(code === 32) && !(code === 39) &&
+            !(code === 45)) {
+            return false;
+        }
+    }
+    return true;
+}
 
 // When the Suprise Me!! button is clicked, trigger the surprise function.
 $("#surprise").on("click", function () {
-    recipes = [];
     var queryURL = "https://api.spoonacular.com/recipes/random?number=10&instructionsRequired=true&apiKey=" + apiKey;
     search(queryURL, "surpriseSearch"); // Take the user's input and search for recipes.
 });
@@ -46,12 +73,18 @@ function search(theURL, theType) {
 // Append the search results to the resultDeck.
 function appendSearchResults(theResults) {
     $(".search-results").empty();
-    for (var i = 0; i < theResults.length; i++) {
+    if (theResults.length === 0) {
         var searchResult = $("<div>");
-        searchResult.addClass("search-result");
-        searchResult.attr("data-id", theResults[i].id);
-        searchResult.html(theResults[i].title);
+        searchResult.html("We couldn't find anything with that search. Try again!");
         resultDeck.append(searchResult);
+    } else {
+        for (var i = 0; i < theResults.length; i++) {
+            var searchResult = $("<div>");
+            searchResult.addClass("search-result");
+            searchResult.attr("data-id", theResults[i].id);
+            searchResult.html(theResults[i].title);
+            resultDeck.append(searchResult);
+        }
     }
 }
 
