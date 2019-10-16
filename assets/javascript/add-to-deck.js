@@ -11,27 +11,24 @@ function deckButton() {
     $("#deck-item-drop-div").append(addButton);
     addButton.text(sessionId.title);
     addButton.attr("recipe-id", id);
+    addButton.attr("id", "deck-" + id);
 };
 
 //function for displaying the recipe and ingredients on the correct div
-function buttonDisplay(){
+function buttonDisplay() {
     var id = $(this).attr("recipe-id");
     var recipe = JSON.parse(sessionStorage.getItem(id));
-    console.log(recipe);
-$(".ing-and-buttons").text(sessionStorage.getItem(id));
-$(".recipe-instructions").text(sessionStorage.getItem(recipe));
-displayDeckRecipe(id);
-console.log("button display " + id);
+    $(".ing-and-buttons").text(sessionStorage.getItem(id));
+    $(".recipe-instructions").text(sessionStorage.getItem(recipe));
+    displayDeckRecipe(id);
 };
 
 //function for displaying the recipe
-function displayDeckRecipe(recipeIdNumber){
+function displayDeckRecipe(recipeIdNumber) {
     var recipeItem = JSON.parse(sessionStorage.getItem(recipeIdNumber));
     var ing = recipeItem.ingredients;
     var instr = recipeItem.instructions;
-    var id = $(this).attr("recipe-id");
-    console.log("displaydeckrecipe " + recipeIdNumber);
-   // clears old recipe 
+    // clears old recipe 
     ingAndButtonsRow.empty();
     recipeInstRow.empty();
 
@@ -50,7 +47,7 @@ function displayDeckRecipe(recipeIdNumber){
     // Add the "add to deck" button.
     var addToDeckButton = $("<button>");
     addToDeckButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
-    // addToDeckButton.attr("recipe-id", id);
+    addToDeckButton.attr("recipe-id", recipeIdNumber);
     addToDeckButton.attr("id", "add-to-deck");
     addToDeckButton.text("Add to Deck");
 
@@ -58,49 +55,55 @@ function displayDeckRecipe(recipeIdNumber){
 
     buttonColumn.append(listButtons);
 
-     // Add the "edit" button.
-     var editButton = $("<button>");
-     editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
-     editButton.attr("recipe-id", id);
-     editButton.attr("id", "edit-recipe");
-     editButton.text("Edit Recipe");
- 
-     listButtons.append(editButton);
- 
-     buttonColumn.append(listButtons);
+    // Add the "edit" button.
+    var editButton = $("<button>");
+    editButton.addClass("btn btn-outline-success mr-2 my-sm-2 btn-block");
+    editButton.attr("recipe-id", recipeIdNumber);
+    editButton.attr("id", "edit-recipe");
+    editButton.text("Edit Recipe");
+
+    listButtons.append(editButton);
+
+    buttonColumn.append(listButtons);
 
     // build h3 label
-    var labelH3 = $("<h3>");
-    labelH3.text("Ingredients");
-    ingrColumn.append(labelH3);
+    var recipeHeader = $("<h3>");
+    recipeHeader.text(recipeItem.title);
+    ingrColumn.append(recipeHeader);
+
+    var ingHeader = $("<h5>");
+    ingHeader.text("Ingredients");
+    ingrColumn.append(ingHeader);
 
     // Add the ingredients to the container
-    for(i = 0; i < ing.length; i++){
+    for (i = 0; i < ing.length; i++) {
         var ingredientLi = $("<li>");
         ingredientLi.addClass("list-style");
         ingrColumn.append(ingredientLi);
         ingredientLi.append(ing[i]);
-        console.log(ing[i]);
-    };   
+    };
 
     // Add the ingredient and button columns to the ingAndButtonsRow and 
     // add the instructions column to the recipeInstRow.
     ingAndButtonsRow.append(ingrColumn);
     ingAndButtonsRow.append(buttonColumn);
     recipeInstRow.append(instColumn);
-    
+
+    var instHeader = $("<h5>");
+    instHeader.text("Instructions");
+    instColumn.append(instHeader);
+
     //Add instructions to the container
-    for(i = 0; i < instr.length; i++){
+    for (i = 0; i < instr.length; i++) {
         var instructionLi = $("<li>");
         instructionLi.addClass("list-style")
         instColumn.append(instructionLi);
-        instructionLi.append(i+1 + ") " + instr[i]);
-        console.log(instr[i]);
-    };  
+        instructionLi.append(i + 1 + ") " + instr[i]);
+    };
     //Add button list
-    createListButton(); 
+    createListButton();
 };
-        
+
 //Event handlers
 $(document).on("click", "#add-to-deck", deckButton);
 $(document).on("click", ".deck-item", buttonDisplay);
