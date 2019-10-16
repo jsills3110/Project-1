@@ -101,6 +101,8 @@ function getRecipeAndDisplay() {
         instructions: []
     }
 
+    // Show related images
+    displayRecipeImage(recipeJSON.title);
     callIngredients(recipeJSON, recipeId);
 }
 
