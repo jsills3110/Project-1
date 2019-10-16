@@ -17,7 +17,9 @@ var recipeInstRow = $("#recipe-instructions"); // Find the recipe-instructions r
 // When the Edit Recipe button is clicked, convert the recipe into an editable version of itself.
 $(document).on("click", "#edit-recipe", function () {
     recipeId = $(this).attr("recipe-id");
+    console.log("recipeId from editRecipe.js: " + recipeId);
     recipe = JSON.parse(sessionStorage.getItem(recipeId));
+    console.log("recipe from editRecipe.js: " + recipe);
     createForm();
 });
 
@@ -76,6 +78,7 @@ function createForm() {
     // Create a cancel button that allows the user to cancel the changes they made to the recipe.
     var cancelButton = $("<button>");
     cancelButton.addClass("btn btn-outline-danger mr-2 my-sm-2");
+    cancelButton.attr("recipe-id", recipeId);
     cancelButton.attr("id", "cancel-edits");
     cancelButton.text("Cancel Edits");
 
@@ -92,10 +95,18 @@ $(document).on("click", "#submit-edits", function (event) {
     recipeId = editor.attr("data-recipeid"); // Grab the Spoonacular recipe ID
     var numberOfIngrs = editor.attr("data-ingrs"); // Grab the number of ingredients
     var numberOfSteps = editor.attr("data-steps"); // Grab the number of instructions
+    var newRecipeId;
+
+    // If the recipe has already been edited before, keep the same id. Otherwise, create a new id.
+    if (recipeId.indexOf("-") > -1) {
+        newRecipeId = recipeId;
+    } else {
+        newRecipeId = "userId-" + recipeId;
+    }
 
     // Set up a new JSON object to store the changed recipe.
     var newJSON = {
-        spoonId: "userId-" + recipeId,
+        spoonId: newRecipeId,
         title: $("#title").val().trim(),
         ingredients: [],
         instructions: []
@@ -114,5 +125,16 @@ $(document).on("click", "#submit-edits", function (event) {
     }
 
     // Put the new JSON recipe in session storage.
-    sessionStorage.setItem("userid-" + recipeId, JSON.stringify(newJSON));
+    sessionStorage.setItem(newRecipeId, JSON.stringify(newJSON));
+
+    // If the recipe is present on the deck, edit the deck button.
+    $("#deck-" + newRecipeId).text(newJSON.title);
+
+    displayDeckRecipe(newRecipeId);
+});
+
+// When the user clicks on the "Cancel Edits" button...
+$(document).on("click", "#cancel-edits", function (event) {
+    recipeId = $(this).attr("recipe-id");
+    displayDeckRecipe(recipeId);
 });
