@@ -12,7 +12,7 @@ auth.onAuthStateChanged(user=>{
         $("#logout").attr("hidden", false);
         $("#login-toggle").attr("hidden", true);
         console.log('user logged in: ', user);
-
+        console.log(user.uid);
        
         $("#create-group-button").on("click", function(){
             var tempGroupName = $("#create-group-textBox").val().trim();
@@ -23,6 +23,14 @@ auth.onAuthStateChanged(user=>{
                 group: tempGroupName
             })
         })
+        $(document).on("click", ".group-list-button", function(){
+            currentRecipeID = $("#add-to-deck").attr("recipe-id");
+            database.ref().push({
+                recipe: currentRecipeID
+            })
+          
+        })
+
     }
     else{
         console.log('user logged out')
@@ -40,6 +48,13 @@ auth.onAuthStateChanged(user=>{
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
    
      })
+     auth.onAuthStateChanged(user=>{
+        database.ref().push({
+            userEmail: user.email
+        })
+
+     })
+    
   })
 
 //logout
