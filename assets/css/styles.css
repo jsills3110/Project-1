@@ -89,6 +89,10 @@ li:hover{
 margin-bottom: 10rem;
 }
 
+.search-results{
+    margin-bottom: 10rem;
+}
+
 .deck-menu{
     position: fixed;
     bottom: 0%;
