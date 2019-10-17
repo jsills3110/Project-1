@@ -39,6 +39,7 @@ function createListButton(){
 }
 //creates the lists of groups
 function createList(){
+  
   $("#groupList").empty();
   for (i=0;i<groupList.length; i++){
     var listOpenDiv = "<a class='dropdown-item group-list-button' href='#'>"

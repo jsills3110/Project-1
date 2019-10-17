@@ -5,32 +5,16 @@ database = firebase.database();
 //   var ui = new firebaseui.auth.AuthUI(firebase.auth());
 const auth = firebase.auth();
 //   const db = firebase.firestore();
-
+var currentUser;
 //listen for auth status changes
 auth.onAuthStateChanged(user=>{
     if(user){
+        currentUser = user;
         $("#logout").attr("hidden", false);
         $("#login-toggle").attr("hidden", true);
         console.log('user logged in: ', user);
         console.log(user.uid);
        
-        $("#create-group-button").on("click", function(){
-            var tempGroupName = $("#create-group-textBox").val().trim();
-            var tempArray = "HELLO";
-            console.log(tempGroupName);
-            database.ref().push({
-                userEmail: user.email,
-                group: tempGroupName
-            })
-        })
-        $(document).on("click", ".group-list-button", function(){
-            currentRecipeID = $("#add-to-deck").attr("recipe-id");
-            database.ref().push({
-                recipe: currentRecipeID
-            })
-          
-        })
-
     }
     else{
         console.log('user logged out')
@@ -43,18 +27,10 @@ auth.onAuthStateChanged(user=>{
   $("#signup").on("click", function(){
     const email = $("#email").val().trim();
     const password = $("#password").val().trim();
-    console.log(email, password);
-    console.log("????");
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
    
      })
-     auth.onAuthStateChanged(user=>{
-        database.ref().push({
-            userEmail: user.email
-        })
-
-     })
-    
+   
   })
 
 //logout
