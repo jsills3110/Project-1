@@ -77,7 +77,7 @@ function displayDeckRecipe(recipeIdNumber) {
 
     // Add the ingredients to the container
     for (i = 0; i < ing.length; i++) {
-        var ingredientLi = $("<li>");
+        var ingredientLi = $("<li><input type='checkbox'>");
         ingredientLi.addClass("list-style");
         ingrColumn.append(ingredientLi);
         ingredientLi.append(ing[i]);
@@ -95,7 +95,7 @@ function displayDeckRecipe(recipeIdNumber) {
 
     //Add instructions to the container
     for (i = 0; i < instr.length; i++) {
-        var instructionLi = $("<li>");
+        var instructionLi = $("<li><input type='checkbox'> ");
         instructionLi.addClass("list-style")
         instColumn.append(instructionLi);
         instructionLi.append(i + 1 + ") " + instr[i]);
