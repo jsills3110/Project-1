@@ -51,7 +51,8 @@ function checkAlphanumeric(theSearch) {
 }
 
 // When the Suprise Me!! button is clicked, trigger the surprise function.
-$("#surprise").on("click", function () {
+$("#surprise").on("click", function (event) {
+    event.preventDefault();
     var queryURL = "https://api.spoonacular.com/recipes/random?number=10&instructionsRequired=true&apiKey=" + apiKey;
     search(queryURL, "surpriseSearch"); // Take the user's input and search for recipes.
 });
