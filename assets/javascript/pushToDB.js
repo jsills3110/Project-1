@@ -8,15 +8,17 @@
         $("#ing-and-buttons").empty();
         $("#recipe-instructions").empty();
         $("#deck-item-drop-div").empty();
+        $("#create-group-textBox").empty();
+        $("#create-group-textBox").val("");
         groupList = [];
-        groupOfRecipies = [];
-        groupOfRecipieTitle = [];
-        currentRecipeID;
-        currentRecipeTitle;
-        groupItem;
+        // groupOfRecipies = [];
+        // groupOfRecipieTitle = [];
+        // currentRecipeID;
+        // currentRecipeTitle;
+        // groupItem;
 
 
-        groupingsOfRecipies = {};
+        // groupingsOfRecipies = {};
         
     })
     $("#login").on("click", function(event){
@@ -28,7 +30,10 @@
         $("#ing-and-buttons").empty();
         $("#recipe-instructions").empty();
         $("#deck-item-drop-div").empty();
-      
+        $("#create-group-textBox").empty();
+        $("#create-group-textBox").val("");
+        groupList = [];
+        groupingsOfRecipies = {};
         auth.onAuthStateChanged(user=>{
             var tempUserPath;
             var tempUserID;
@@ -39,12 +44,16 @@
             reference.once("value", function(snapshot){
                 //need to empty prior because of persistent cached data
                 $("#group-items-list").empty();
+                groupList = [];
+                groupingsOfRecipies = {};
                 snapshot.forEach(function(snapshot2){
                     var groupItemDiv = "<div class = 'group-item'><button class = 'btn btn-outline-success mr-2 my-sm-2 btn-block group-item-button'>";
                     var groupItemClosingDiv = "</button></div><br>";
                     console.log(snapshot2.key)
                     var groupItem =snapshot2.key;
+                   
                     groupingsOfRecipies[groupItem] = [];
+                    
                     groupList.push(groupItem);
                     createList();
                     $("#group-items-list").append(groupItemDiv + groupItem + groupItemClosingDiv);
@@ -61,7 +70,7 @@
             var tempGroupPath = "users/" + tempUserID + "/" + tempGroupName;
             var reference=database.ref(tempGroupPath);
             reference.once("value", function(snapshot){
-                $("#deck-item-drop-div").empty()
+                $("#deck-item-drop-div").empty();
                 snapshot.forEach(function(snapshot2){
                     var deckButtonDiv = $("<button>");
                     deckButtonDiv.attr("type", "button");
@@ -93,14 +102,22 @@
 
     $("#create-group-button").on("click", function(event){
         auth.onAuthStateChanged(user=>{
-            event.preventDefault();
-            tempGroupName = $("#create-group-textBox").val().trim();
-            tempUID = user.uid;
-            var userPath = "users/" + tempUID;
-            
-            database.ref(userPath).update({
-                [tempGroupName]: 0
-            })
+            if($("#create-group-textBox").val() != ''){
+                
+                event.preventDefault();
+                console.log("BREACH!")
+                tempGroupName = $("#create-group-textBox").val().trim();
+                console.log(tempGroupName);
+                tempUID = user.uid;
+                var userPath = "users/" + tempUID;
+                
+                database.ref(userPath).update({
+                    [tempGroupName]: 0
+                })
+            }
+            else{
+
+            }
         })
     })
     $("#signup").on("click", function(){
