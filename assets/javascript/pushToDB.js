@@ -10,16 +10,7 @@
         $("#deck-item-drop-div").empty();
         $("#create-group-textBox").empty();
         $("#create-group-textBox").val("");
-        groupList = [];
-        // groupOfRecipies = [];
-        // groupOfRecipieTitle = [];
-        // currentRecipeID;
-        // currentRecipeTitle;
-        // groupItem;
-
-
-        // groupingsOfRecipies = {};
-        
+        groupList = [];        
     })
     $("#login").on("click", function(event){
         event.preventDefault();
@@ -33,7 +24,7 @@
         $("#create-group-textBox").empty();
         $("#create-group-textBox").val("");
         groupList = [];
-        groupingsOfRecipies = {};
+        // groupingsOfRecipies = {};
         auth.onAuthStateChanged(user=>{
             var tempUserPath;
             var tempUserID;
@@ -49,7 +40,7 @@
                 snapshot.forEach(function(snapshot2){
                     var groupItemDiv = "<div class = 'group-item'><button class = 'btn btn-outline-success mr-2 my-sm-2 btn-block group-item-button'>";
                     var groupItemClosingDiv = "</button></div><br>";
-                    console.log(snapshot2.key)
+               
                     var groupItem =snapshot2.key;
                    
                     groupingsOfRecipies[groupItem] = [];
@@ -61,6 +52,8 @@
             })
         })
     })
+
+
     $(document).on("click", ".group-item-button", function(){
         auth.onAuthStateChanged(user=>{
           
@@ -75,9 +68,15 @@
                     var deckButtonDiv = $("<button>");
                     deckButtonDiv.attr("type", "button");
                     deckButtonDiv.addClass("btn btn-primary deck-item set-id inline");
-                    deckButtonDiv.attr("recipe-id", snapshot2.val());
-                    deckButtonDiv.text(snapshot2.key);
+                    deckButtonDiv.attr("recipe-id", snapshot2.key);
+                    deckButtonDiv.text(snapshot2.val().title);
                     $("#deck-item-drop-div").append(deckButtonDiv)
+
+                    var recipeStored;
+                    recipeStored = JSON.stringify(snapshot2.val());
+                    // Put the new JSON recipe in session storage.
+                    sessionStorage.setItem(snapshot2.key, recipeStored);
+
                 })
             })
             
@@ -89,28 +88,26 @@
             event.preventDefault();
             currentRecipeID = $("#add-to-deck").attr("recipe-id");
             tempJSON = JSON.parse(sessionStorage.getItem(currentRecipeID));
+           
             currentRecipeTitle = tempJSON.title;
             tempUID = user.uid;
             tempGroupName = $(this).text();
             var groupPath = "users/" + tempUID + "/" + tempGroupName;
-            
+            // var recipePath = groupPath + "/" + currentRecipeTitle;
             database.ref(groupPath).update({
-                [currentRecipeTitle]: currentRecipeID
+                [currentRecipeID]: tempJSON
             })
+          
         })
     })
 
     $("#create-group-button").on("click", function(event){
         auth.onAuthStateChanged(user=>{
             if($("#create-group-textBox").val() != ''){
-                
                 event.preventDefault();
-                console.log("BREACH!")
                 tempGroupName = $("#create-group-textBox").val().trim();
-                console.log(tempGroupName);
                 tempUID = user.uid;
                 var userPath = "users/" + tempUID;
-                
                 database.ref(userPath).update({
                     [tempGroupName]: 0
                 })
@@ -127,12 +124,9 @@
        
          })
          auth.onAuthStateChanged(user=>{
-           
             var tempuser = user.uid;
             database.ref("users").update({
                 [tempuser]: 0
-              }) 
-            
+              })    
          })
-        
-      })
+    })
